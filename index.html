@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>devxdave</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#0b1120,#0f172a);
+  color:#ffffff;
+  min-height:100vh;
+}
+
+/* TOP BAR */
+.app-bar{
+  padding:40px 25px 25px;
+  text-align:center;
+  background:#0f172a;
+  border-bottom:1px solid #1e293b;
+}
+
+.profile-circle{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px auto;
+  border:2px solid #1e293b;
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:2px;
+}
+
+.app-bar h1{
+  font-size:24px;
+  letter-spacing:3px;
+}
+
+/* CONTENT */
+.content{
+  padding:20px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:18px;
+  transition:0.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+.card h2{
+  font-size:14px;
+  margin-bottom:12px;
+  letter-spacing:1px;
+  opacity:0.7;
+}
+
+.label{
+  font-weight:600;
+}
+
+a{
+  color:#ffffff;
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+/* WATCHLIST */
+.watchlist .folder{
+  background:#0b1225;
+  border:1px solid #1e293b;
+  padding:12px 15px;
+  border-radius:12px;
+  margin-bottom:10px;
+  transition:0.3s ease;
+}
+
+.watchlist .folder:hover{
+  background:#16213e;
+  transform:translateX(6px);
+}
+
+/* SPOTIFY */
+.spotify-card{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:#0b1225;
+  border:1px solid #1e293b;
+  border-radius:18px;
+  padding:18px;
+  transition:0.3s ease;
+}
+
+.spotify-card.active{
+  box-shadow:0 0 30px rgba(29,185,84,0.4);
+}
+
+.spotify-cover{
+  width:75px;
+  height:75px;
+  border-radius:12px;
+}
+
+.spotify-info{
+  flex:1;
+}
+
+.spotify-status{
+  font-size:12px;
+  opacity:0.6;
+}
+
+.spotify-title{
+  font-weight:600;
+  margin:4px 0;
+  color:#1db954;
+}
+
+.spotify-artist{
+  font-size:13px;
+  opacity:0.7;
+}
+
+.spotify-bar{
+  height:6px;
+  background:#1e293b;
+  border-radius:20px;
+  margin-top:12px;
+  overflow:hidden;
+}
+
+.spotify-progress{
+  height:100%;
+  width:0%;
+  background:#1db954;
+  box-shadow:0 0 10px #1db954;
+  transition:width 1s linear;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:0.6;
+  margin-top:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app-bar">
+  <div class="profile-circle">𝗗𝗔𝗩𝗘</div>
+  <h1>DEVXDAVE</h1>
+</div>
+
+<div class="content">
+
+  <!-- BASIC INFO -->
+  <div class="card">
+    <h2>[ BASIC_INFO ]</h2>
+    <p><span class="label">Name:</span> Dave Christopher</p>
+    <p><span class="label">Nickname:</span> Dev</p>
+    <p><span class="label">Location:</span> Philippines</p>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="card">
+    <h2>[ SOCIAL_LINKS ]</h2>
+    <p><span class="label">Facebook:</span> 
+      <a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">Dave Christopher</a>
+    </p>
+    <p><span class="label">Instagram:</span> 
+      <a href="https://www.instagram.com/davechristopher_0" target="_blank">davechristopher_0</a>
+    </p>
+    <p><span class="label">Chess.com:</span> 
+      <a href="https://www.chess.com/member/DaveChristopherr" target="_blank">DaveChristopherr</a>
+    </p>
+  </div>
+
+  <!-- FAVORITES -->
+  <div class="card">
+    <h2>[ FAVORITES ]</h2>
+    <p><span class="label">Color:</span> Blue</p>
+    <p><span class="label">Food:</span> Pizza</p>
+    <p><span class="label">Drink:</span> Matcha</p>
+    <p><span class="label">Music:</span> K-pop, Indie Pop</p>
+    <p><span class="label">Artist:</span> Clairo, Beabadoobee</p>
+    <p><span class="label">Movie:</span> Dead Poets Society</p>
+  </div>
+
+  <!-- HOBBIES -->
+  <div class="card">
+    <h2>[ HOBBIES ]</h2>
+    <p>Watching K-Drama | Listening to Music | Chess | Coding</p>
+  </div>
+
+  <!-- WATCHLIST -->
+  <div class="card watchlist">
+    <h2>[ WATCHLIST ]</h2>
+
+    <a href="https://devxdave1.github.io/My-K-drama-list-/" target="_blank">
+      <div class="folder">K-Drama</div>
+    </a>
+
+    <a href="https://devxdave1.github.io/My-movie-series-/" target="_blank">
+      <div class="folder">Movie</div>
+    </a>
+
+    <a href="https://devxdave1.github.io/My-k-movie-list-/" target="_blank">
+      <div class="folder">K-Movie</div>
+    </a>
+
+  </div>
+
+  <!-- PERSONALITY -->
+  <div class="card">
+    <h2>[ PERSONALITY ]</h2>
+    <p>Creative | Calm | Competitive | Passionate about learning new things</p>
+  </div>
+
+  <!-- SPOTIFY -->
+  <div class="card">
+    <h2>[ NOW_PLAYING ]</h2>
+
+    <div id="spotifyCard" class="spotify-card">
+      <img id="cover" class="spotify-cover">
+      <div class="spotify-info">
+        <div id="status" class="spotify-status">Connecting to Spotify...</div>
+        <div id="title" class="spotify-title">Not Playing</div>
+        <div id="artist" class="spotify-artist"></div>
+        <div class="spotify-bar">
+          <div id="progress" class="spotify-progress"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    ©devxdave.
+  </div>
+
+</div>
+
+<script>
+
+const clientId = "YOUR_CLIENT_ID";
+const redirectUri = window.location.origin;
+const scopes = "user-read-currently-playing user-read-playback-state";
+
+function getToken(){
+  const hash = window.location.hash;
+  if(hash){
+    return new URLSearchParams(hash.substring(1)).get("access_token");
+  }else{
+    const auth =
+    "https://accounts.spotify.com/authorize" +
+    "?response_type=token" +
+    "&client_id=" + clientId +
+    "&scope=" + encodeURIComponent(scopes) +
+    "&redirect_uri=" + encodeURIComponent(redirectUri);
+    window.location = auth;
+  }
+}
+
+async function updateNowPlaying(token){
+  try{
+    const res = await fetch(
+      "https://api.spotify.com/v1/me/player/currently-playing",
+      { headers:{ Authorization:"Bearer "+token } }
+    );
+
+    if(res.status === 204){
+      document.getElementById("status").textContent="Not Playing";
+      document.getElementById("title").textContent="No active track";
+      document.getElementById("artist").textContent="";
+      document.getElementById("progress").style.width="0%";
+      document.getElementById("spotifyCard").classList.remove("active");
+      return;
+    }
+
+    const data = await res.json();
+    if(!data || !data.item) return;
+
+    document.getElementById("status").textContent="Listening on Spotify";
+    document.getElementById("title").textContent=data.item.name;
+    document.getElementById("artist").textContent=
+      data.item.artists.map(a=>a.name).join(", ");
+    document.getElementById("cover").src=
+      data.item.album.images[0].url;
+
+    const percent =
+      (data.progress_ms / data.item.duration_ms)*100;
+
+    document.getElementById("progress").style.width=
+      percent+"%";
+
+    document.getElementById("spotifyCard").classList.add("active");
+
+  }catch(err){
+    console.log(err);
+  }
+}
+
+const token = getToken();
+setInterval(()=>updateNowPlaying(token),3000);
+
+</script>
+
+</body>
+</html>
