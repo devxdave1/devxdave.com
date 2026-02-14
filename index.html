@@ -28,7 +28,7 @@ body{
 
 /* TOP BAR */
 .app-bar{
-  padding:40px 25px 25px;
+  padding:70px 25px 25px;
   text-align:center;
   background:#111111;
   border-bottom:1px solid #1f1f1f;
@@ -156,6 +156,39 @@ a:hover{
   object-fit:cover;
 }
 
+.main-title{
+  font-size:22px;
+  letter-spacing:3px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.social-icons{
+  display:flex;
+  gap:10px;
+}
+
+.social-icons img{
+  width:16px;
+  height:16px;
+  filter: invert(1) brightness(1.2);
+  opacity:0.8;
+  transition:0.3s ease;
+}
+
+.social-icons img:hover{
+  transform:scale(1.2);
+  opacity:1;
+}
+
+.main-title{
+  margin-top:25px;
+}
+
 .footer{
   text-align:center;
   font-size:12px;
@@ -168,9 +201,29 @@ a:hover{
 
 <body>
 
-<div class="app-bar">
+<<div class="app-bar">
   <div class="profile-circle">𝗗𝗔𝗩𝗘</div>
-  <h1>DEVXDAVE</h1>
+
+  <h1 class="main-title">
+    DEVXDAVE
+    <span class="social-icons">
+      <a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+      </a>
+
+      <a href="https://www.instagram.com/davechristopher_0" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+      </a>
+
+      <a href="https://www.chess.com/member/DaveChristopherr" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3655/3655989.png">
+      </a>
+
+      <a href="mailto:your@email.com">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+      </a>
+    </span>
+  </h1>
 </div>
 
 <div class="content">
@@ -209,17 +262,6 @@ src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
 <p><span class="label">Age:</span> 7</p>
 <p><span class="label">Birthday:</span> July 19 2018</p>
 <p><span class="label">Location:</span> Philippines</p>
-</div>
-
-<!-- SOCIAL -->
-<div class="card">
-<h2>[ SOCIAL_LINKS ]</h2>
-<p><span class="label">Facebook:</span> 
-<a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">Dave Christopher</a></p>
-<p><span class="label">Instagram:</span> 
-<a href="https://www.instagram.com/davechristopher_0" target="_blank">davechristopher_0</a></p>
-<p><span class="label">Chess.com:</span> 
-<a href="https://www.chess.com/member/DaveChristopherr" target="_blank">DaveChristopherr</a></p>
 </div>
 
   <!-- HOBBIES -->
