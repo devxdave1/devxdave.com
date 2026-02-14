@@ -246,10 +246,14 @@ a:hover{
 
   <!-- SPOTIFY -->
   <div class="card">
-    <h2>[ NOW_PLAYING ]</h2>
+    <h2>[ SPOTIFY ]</h2>
 
     <div id="spotifyCard" class="spotify-card">
-      <img id="cover" class="spotify-cover">
+      <<img 
+  id="cover" 
+  class="spotify-cover"
+  src="https://i.scdn.co/image/ab67616d0000b273cdb6454983f05559cc49f40b"
+/>
       <div class="spotify-info">
         <div id="status" class="spotify-status">Connecting to Spotify...</div>
         <div id="title" class="spotify-title">Not Playing</div>
@@ -296,6 +300,8 @@ async function updateNowPlaying(token){
     );
 
     if(res.status === 204 || res.status > 400){
+      document.getElementById("cover").src =
+"https://i.scdn.co/image/ab67616d0000b273cdb6454983f05559cc49f40b";
       document.getElementById("status").textContent="Not Playing";
       document.getElementById("title").textContent="No active track";
       document.getElementById("artist").textContent="";
@@ -332,4 +338,4 @@ setInterval(()=>updateNowPlaying(token),3000);
 </script>
 
 </body>
-</html>
+  </html>
