@@ -291,12 +291,11 @@ function getToken(){
 async function updateNowPlaying(token){
   try{
     const res = await fetch(
-      "https://api.spotify.com/v1/me/player/currently-playing"
-  ",
+      "https://api.spotify.com/v1/me/player/currently-playing",
       { headers:{ Authorization:"Bearer "+token } }
     );
 
-    if(res.status === 204){
+    if(res.status === 204 || res.status > 400){
       document.getElementById("status").textContent="Not Playing";
       document.getElementById("title").textContent="No active track";
       document.getElementById("artist").textContent="";
@@ -306,7 +305,6 @@ async function updateNowPlaying(token){
     }
 
     const data = await res.json();
-    if(!data || !data.item) return;
 
     document.getElementById("status").textContent="Listening on Spotify";
     document.getElementById("title").textContent=data.item.name;
