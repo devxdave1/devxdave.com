@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>devxdave</title>
-
+  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
@@ -16,7 +16,7 @@
 }
 
 body{
-  background:linear-gradient(135deg,#0b1120,#0f172a);
+  background:#0a0a0a;
   color:#ffffff;
   min-height:100vh;
 }
@@ -25,28 +25,29 @@ body{
 .app-bar{
   padding:40px 25px 25px;
   text-align:center;
-  background:#0f172a;
-  border-bottom:1px solid #1e293b;
+  background:#111111;
+  border-bottom:1px solid #1f1f1f;
 }
 
 .profile-circle{
-  width:120px;
-  height:120px;
+  width:110px;
+  height:110px;
   border-radius:50%;
-  background:#000;
+  background:#0f0f0f;
   display:flex;
   align-items:center;
   justify-content:center;
   margin:0 auto 20px;
-  border:2px solid #1e293b;
-  font-size:22px;
+  border:1px solid #1f1f1f;
+  font-size:20px;
   font-weight:600;
   letter-spacing:2px;
 }
 
 .app-bar h1{
-  font-size:24px;
+  font-size:22px;
   letter-spacing:3px;
+  font-weight:600;
 }
 
 /* CONTENT */
@@ -58,20 +59,22 @@ body{
 
 /* CARD */
 .card{
-  background:#0f172a;
-  border:1px solid #1e293b;
+  background:#111111;
+  border:1px solid #1f1f1f;
   border-radius:18px;
   padding:20px;
   margin-bottom:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
   transition:0.3s ease;
 }
 
 .card:hover{
   transform:translateY(-4px);
+  background:#1a1a1a;
 }
 
 .card h2{
-  font-size:14px;
+  font-size:13px;
   margin-bottom:12px;
   letter-spacing:1px;
   opacity:0.7;
@@ -82,18 +85,18 @@ body{
 }
 
 a{
-  color:#3b82f6;
+  color:#ffffff;
   text-decoration:none;
 }
 
 a:hover{
-  text-decoration:underline;
+  opacity:0.7;
 }
 
 /* WATCHLIST */
 .watchlist .folder{
-  background:#0b1225;
-  border:1px solid #1e293b;
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
   padding:12px 15px;
   border-radius:12px;
   margin-bottom:10px;
@@ -101,53 +104,37 @@ a:hover{
 }
 
 .watchlist .folder:hover{
-  background:#16213e;
+  background:#1a1a1a;
   transform:translateX(6px);
 }
 
-/* SPOTIFY - SMALL VERSION */
+/* SPOTIFY */
 .spotify-card{
   display:flex;
   align-items:center;
   gap:10px;
-  background:#0b1225;
-  border:1px solid #1e293b;
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
   border-radius:14px;
-  padding:10px 12px;   /* mas maliit padding */
-  transition:0.3s ease;
-}
-
-.spotify-cover{
-  width:40px;   /* mas maliit cover */
-  height:40px;
-}
-
-.spotify-status{
-  font-size:10px;
-  opacity:0.5;
+  padding:10px 12px;
 }
 
 .spotify-title{
   font-size:13px;
   font-weight:600;
-  margin:2px 0;
-  color:#3b82f6;
-}
-
-.spotify-artist{
-  font-size:11px;
-  opacity:0.6;
 }
 
 .spotify-bar{
-  height:4px;   /* mas manipis progress */
+  height:4px;
   margin-top:6px;
+  background:#1f1f1f;
+  border-radius:10px;
 }
-  
+
 .spotify-progress{
   height:100%;
   width:0%;
-  background:#3b82f6;
+  background:#ffffff;
   transition:width 1s linear;
 }
 
@@ -157,7 +144,7 @@ a:hover{
   opacity:0.6;
   margin-top:25px;
 }
-</style>
+  </style>
 </head>
 
 <body>
