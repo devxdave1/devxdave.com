@@ -37,7 +37,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:0 auto 20px auto;
+  margin:0 auto 20px;
   border:2px solid #1e293b;
   font-size:22px;
   font-weight:600;
@@ -82,7 +82,7 @@ body{
 }
 
 a{
-  color:#ffffff;
+  color:#3b82f6;
   text-decoration:none;
 }
 
@@ -118,17 +118,12 @@ a:hover{
 }
 
 .spotify-card.active{
-  box-shadow:0 0 30px rgba(29,185,84,0.4);
+  box-shadow:0 0 30px rgba(59,130,246,0.5);
 }
 
 .spotify-cover{
-  width:75px;
-  height:75px;
-  border-radius:12px;
-}
-
-.spotify-info{
-  flex:1;
+  width:70px;
+  height:70px;
 }
 
 .spotify-status{
@@ -139,7 +134,7 @@ a:hover{
 .spotify-title{
   font-weight:600;
   margin:4px 0;
-  color:#1db954;
+  color:#3b82f6;
 }
 
 .spotify-artist{
@@ -151,15 +146,14 @@ a:hover{
   height:6px;
   background:#1e293b;
   border-radius:20px;
-  margin-top:12px;
+  margin-top:10px;
   overflow:hidden;
 }
 
 .spotify-progress{
   height:100%;
   width:0%;
-  background:#1db954;
-  box-shadow:0 0 10px #1db954;
+  background:#3b82f6;
   transition:width 1s linear;
 }
 
@@ -181,161 +175,145 @@ a:hover{
 
 <div class="content">
 
-  <!-- BASIC INFO -->
-  <div class="card">
-    <h2>[ BASIC_INFO ]</h2>
-    <p><span class="label">Name:</span> Dave Christopher</p>
-    <p><span class="label">Nickname:</span> Dev</p>
-    <p><span class="label">Location:</span> Philippines</p>
-  </div>
+<!-- SPOTIFY (NOW AT TOP) -->
+<div class="card">
+<h2>
+  <a href="https://open.spotify.com/" target="_blank">[ SPOTIFY ]</a>
+</h2>
 
-  <!-- SOCIAL -->
-  <div class="card">
-    <h2>[ SOCIAL_LINKS ]</h2>
-    <p><span class="label">Facebook:</span> 
-      <a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">Dave Christopher</a>
-    </p>
-    <p><span class="label">Instagram:</span> 
-      <a href="https://www.instagram.com/davechristopher_0" target="_blank">davechristopher_0</a>
-    </p>
-    <p><span class="label">Chess.com:</span> 
-      <a href="https://www.chess.com/member/DaveChristopherr" target="_blank">DaveChristopherr</a>
-    </p>
-  </div>
+<div id="spotifyCard" class="spotify-card">
 
-  <!-- FAVORITES -->
-  <div class="card">
-    <h2>[ FAVORITES ]</h2>
-    <p><span class="label">Color:</span> Blue</p>
-    <p><span class="label">Food:</span> Pizza</p>
-    <p><span class="label">Drink:</span> Matcha</p>
-    <p><span class="label">Music:</span> K-pop, Indie Pop</p>
-    <p><span class="label">Artist:</span> Clairo, Beabadoobee</p>
-    <p><span class="label">Movie:</span> Dead Poets Society</p>
-  </div>
-
-  <!-- HOBBIES -->
-  <div class="card">
-    <h2>[ HOBBIES ]</h2>
-    <p>Watching K-Drama | Listening to Music | Chess | Coding</p>
-  </div>
-
-  <!-- WATCHLIST -->
-  <div class="card watchlist">
-    <h2>[ WATCHLIST ]</h2>
-
-    <a href="https://devxdave1.github.io/My-K-drama-list-/" target="_blank">
-      <div class="folder">K-Drama</div>
-    </a>
-
-    <a href="https://devxdave1.github.io/My-movie-series-/" target="_blank">
-      <div class="folder">Movie</div>
-    </a>
-
-    <a href="https://devxdave1.github.io/My-k-movie-list-/" target="_blank">
-      <div class="folder">K-Movie</div>
-    </a>
-
-  </div>
-
-  <!-- PERSONALITY -->
-  <div class="card">
-    <h2>[ PERSONALITY ]</h2>
-    <p>Creative | Calm | Competitive | Passionate about learning new things</p>
-  </div>
-
-  <!-- SPOTIFY -->
-  <div class="card">
-    <h2>[ SPOTIFY ]</h2>
-
-    <div id="spotifyCard" class="spotify-card">
-      <<img 
-  id="cover" 
-  class="spotify-cover"
-  src="https://i.scdn.co/image/ab67616d0000b273cdb6454983f05559cc49f40b"
+<img 
+class="spotify-cover"
+src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
 />
-      <div class="spotify-info">
-        <div id="status" class="spotify-status">Connecting to Spotify...</div>
-        <div id="title" class="spotify-title">Not Playing</div>
-        <div id="artist" class="spotify-artist"></div>
-        <div class="spotify-bar">
-          <div id="progress" class="spotify-progress"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="footer">
-    ©devxdave.
-  </div>
+<div style="flex:1">
+<div id="status" class="spotify-status">Connecting to Spotify...</div>
+<div id="title" class="spotify-title">Not Playing</div>
+<div id="artist" class="spotify-artist"></div>
+
+<div class="spotify-bar">
+<div id="progress" class="spotify-progress"></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- BASIC INFO -->
+<div class="card">
+<h2>[ BASIC_INFO ]</h2>
+<p><span class="label">Name:</span> Dave Christopher</p>
+<p><span class="label">Nickname:</span> Dev</p>
+<p><span class="label">Location:</span> Philippines</p>
+</div>
+
+<!-- SOCIAL -->
+<div class="card">
+<h2>[ SOCIAL_LINKS ]</h2>
+<p><span class="label">Facebook:</span> 
+<a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">Dave Christopher</a></p>
+<p><span class="label">Instagram:</span> 
+<a href="https://www.instagram.com/davechristopher_0" target="_blank">davechristopher_0</a></p>
+<p><span class="label">Chess.com:</span> 
+<a href="https://www.chess.com/member/DaveChristopherr" target="_blank">DaveChristopherr</a></p>
+</div>
+
+<!-- FAVORITES -->
+<div class="card">
+<h2>[ FAVORITES ]</h2>
+<p><span class="label">Color:</span> Blue</p>
+<p><span class="label">Food:</span> Pizza</p>
+<p><span class="label">Drink:</span> Matcha</p>
+<p><span class="label">Music:</span> K-pop, Indie Pop</p>
+<p><span class="label">Artist:</span> Clairo, Beabadoobee</p>
+<p><span class="label">Movie:</span> Dead Poets Society</p>
+</div>
+
+<!-- HOBBIES -->
+<div class="card">
+<h2>[ HOBBIES ]</h2>
+<p>Watching K-Drama | Listening to Music | Chess | Coding</p>
+</div>
+
+<!-- WATCHLIST -->
+<div class="card watchlist">
+<h2>[ WATCHLIST ]</h2>
+
+<a href="https://devxdave1.github.io/My-K-drama-list-/" target="_blank">
+<div class="folder">K-Drama</div></a>
+
+<a href="https://devxdave1.github.io/My-movie-series-/" target="_blank">
+<div class="folder">Movie</div></a>
+
+<a href="https://devxdave1.github.io/My-k-movie-list-/" target="_blank">
+<div class="folder">K-Movie</div></a>
+
+</div>
+
+<!-- PERSONALITY -->
+<div class="card">
+<h2>[ PERSONALITY ]</h2>
+<p>Creative | Calm | Competitive | Passionate about learning new things</p>
+</div>
+
+<div class="footer">©devxdave.</div>
 
 </div>
 
 <script>
-
-const clientId = "a3749a83bbd24534b2e709a795fcbae7";
-const redirectUri = "https://devxdave1.github.io/devxdave.com/";
-const scopes = "user-read-currently-playing user-read-playback-state";
+const clientId="a3749a83bbd24534b2e709a795fcbae7";
+const redirectUri="https://devxdave1.github.io/devxdave.com/";
+const scopes="user-read-currently-playing user-read-playback-state";
 
 function getToken(){
-  const hash = window.location.hash;
-  if(hash){
-    return new URLSearchParams(hash.substring(1)).get("access_token");
-  }else{
-    const auth =
-    "https://accounts.spotify.com/authorize" +
-    "?response_type=token" +
-    "&client_id=" + clientId +
-    "&scope=" + encodeURIComponent(scopes) +
-    "&redirect_uri=" + encodeURIComponent(redirectUri);
-    window.location = auth;
-  }
+const hash=window.location.hash;
+if(hash){
+return new URLSearchParams(hash.substring(1)).get("access_token");
+}else{
+const auth="https://accounts.spotify.com/authorize"+
+"?response_type=token"+
+"&client_id="+clientId+
+"&scope="+encodeURIComponent(scopes)+
+"&redirect_uri="+encodeURIComponent(redirectUri);
+window.location=auth;
+}
 }
 
 async function updateNowPlaying(token){
-  try{
-    const res = await fetch(
-      "https://api.spotify.com/v1/me/player/currently-playing",
-      { headers:{ Authorization:"Bearer "+token } }
-    );
+try{
+const res=await fetch(
+"https://api.spotify.com/v1/me/player/currently-playing",
+{headers:{Authorization:"Bearer "+token}}
+);
 
-    if(res.status === 204 || res.status > 400){
-      document.getElementById("cover").src =
-"https://i.scdn.co/image/ab67616d0000b273cdb6454983f05559cc49f40b";
-      document.getElementById("status").textContent="Not Playing";
-      document.getElementById("title").textContent="No active track";
-      document.getElementById("artist").textContent="";
-      document.getElementById("progress").style.width="0%";
-      document.getElementById("spotifyCard").classList.remove("active");
-      return;
-    }
-
-    const data = await res.json();
-
-    document.getElementById("status").textContent="Listening on Spotify";
-    document.getElementById("title").textContent=data.item.name;
-    document.getElementById("artist").textContent=
-      data.item.artists.map(a=>a.name).join(", ");
-    document.getElementById("cover").src=
-      data.item.album.images[0].url;
-
-    const percent =
-      (data.progress_ms / data.item.duration_ms)*100;
-
-    document.getElementById("progress").style.width=
-      percent+"%";
-
-    document.getElementById("spotifyCard").classList.add("active");
-
-  }catch(err){
-    console.log(err);
-  }
+if(res.status===204||res.status>400){
+document.getElementById("status").textContent="Not Playing";
+document.getElementById("title").textContent="No active track";
+document.getElementById("artist").textContent="";
+document.getElementById("progress").style.width="0%";
+document.getElementById("spotifyCard").classList.remove("active");
+return;
 }
 
-const token = getToken();
-setInterval(()=>updateNowPlaying(token),3000);
+const data=await res.json();
 
+document.getElementById("status").textContent="Listening on Spotify";
+document.getElementById("title").textContent=data.item.name;
+document.getElementById("artist").textContent=
+data.item.artists.map(a=>a.name).join(", ");
+
+const percent=(data.progress_ms/data.item.duration_ms)*100;
+document.getElementById("progress").style.width=percent+"%";
+document.getElementById("spotifyCard").classList.add("active");
+
+}catch(err){console.log(err);}
+}
+
+const token=getToken();
+setInterval(()=>updateNowPlaying(token),3000);
 </script>
 
 </body>
-  </html>
+</html>
