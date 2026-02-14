@@ -158,21 +158,30 @@ a:hover{
 .social-icons{
   display:flex;
   justify-content:center;
-  gap:14px;
-  margin-top:10px;
+  gap:16px;
+  margin-top:18px;
 }
 
-.social-icons img{
-  width:18px;
-  height:18px;
-  filter: brightness(0) invert(1);
-  opacity:0.85;
+.social-icons a{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   transition:0.3s ease;
 }
 
-.social-icons img:hover{
-  transform:scale(1.2);
-  opacity:1;
+.social-icons a:hover{
+  transform:scale(1.12);
+  background:#111;
+}
+
+.social-icons img{
+  width:20px;
+  height:20px;
+  filter: brightness(0) invert(1);
 }
 
 .footer{
@@ -192,22 +201,26 @@ a:hover{
   <h1 class="main-title">DEVXDAVE</h1>
 
   <div class="social-icons">
-    <a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg">
-    </a>
 
-    <a href="https://www.instagram.com/davechristopher_0" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-    </a>
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg">
+  </a>
 
-    <a href="https://www.chess.com/member/DaveChristopherr" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg">
-</a>
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/davechristopher_0" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+  </a>
 
-    <a href="mailto:your@email.com">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png">
-    </a>
-  </div>
+  <!-- Chess.com (Pawn Style) -->
+  <a href="https://www.chess.com/member/DaveChristopherr" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg">
+  </a>
+
+  <!-- Spotify -->
+  <a href="https://open.spotify.com/user/31khk7tlijgplhspytqink22oliu?si=_fCgIxPdTwyTBdo0YmvJsQ" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg">
+  </a>
 
 </div>
 
