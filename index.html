@@ -291,7 +291,8 @@ function getToken(){
 async function updateNowPlaying(token){
   try{
     const res = await fetch(
-      "https://api.spotify.com/v1/me/player",
+      "https://api.spotify.com/v1/me/player/currently-playing"
+  ",
       { headers:{ Authorization:"Bearer "+token } }
     );
 
