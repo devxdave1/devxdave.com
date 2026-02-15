@@ -176,6 +176,21 @@ a:hover{
   opacity:0.7;
 }
 
+.quote-item{
+  padding:15px;
+  border:1px solid #1f1f1f;
+  border-radius:12px;
+  margin-bottom:12px;
+  transition:0.3s ease;
+  background:rgba(20,20,20,0.4);
+}
+
+.quote-item:hover{
+  border:1px solid #ffffff;
+  transform:translateY(-3px);
+  background:#141414;
+}
+
 .footer{
   text-align:center;
   font-size:12px;
@@ -295,20 +310,24 @@ src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
 <div class="card">
   <h2 onclick="toggleQuotes()" style="cursor:pointer;">[ QUOTE ]</h2>
 
-  <div id="quoteList" style="display:none; margin-top:15px; line-height:1.8; font-size:14px; opacity:0.85;">
+  <<div id="quoteList" style="display:none; margin-top:15px;">
 
-<p style="font-size:16px; font-weight:600; letter-spacing:0.5px;">
-“I choose solitude over noise, clarity over approval.”
-<br>
-<span style="opacity:0.5; font-size:12px;">— Dev</span>
-</p>
+  <div class="quote-item">
+    <p style="font-weight:600;">
+      “I choose solitude over noise, clarity over approval.”
+    </p>
+    <span style="opacity:0.5; font-size:12px;">— Dev</span>
+  </div>
 
-<hr style="border:0.5px solid #1f1f1f; margin:15px 0;">
+  <div class="quote-item">
+    <p>“Without music, life would be a mistake.”</p>
+    <span style="opacity:0.5; font-size:12px;">— Friedrich Nietzsche</span>
+  </div>
 
-<p>“Without music, life would be a mistake.” — Friedrich Nietzsche</p>
-
-<p>“I consider myself to be a genius who happens to play chess.” — Bobby Fischer</p>
-<div>
+  <div class="quote-item">
+    <p>“I consider myself to be a genius who happens to play chess.”</p>
+    <span style="opacity:0.5; font-size:12px;">— Bobby Fischer</span>
+  </div>
 
 </div>
   
