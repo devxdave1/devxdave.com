@@ -176,20 +176,59 @@ a:hover{
   opacity:0.7;
 }
 
+/* QUOTE DESIGN UPGRADE */
+
 .quote-item{
-  padding:15px;
-  border:1px solid #1f1f1f;
-  border-radius:12px;
-  margin-bottom:12px;
-  transition:0.3s ease;
-  background:rgba(20,20,20,0.4);
+  position: relative;
+  padding:20px 20px 20px 25px;
+  border-radius:16px;
+  margin-bottom:16px;
+  background:rgba(25,25,25,0.6);
+  border-left:3px solid #ffffff;
+  overflow:hidden;
+  transition:0.4s ease;
+}
+
+.quote-item::before{
+  content:"“";
+  position:absolute;
+  top:-10px;
+  right:15px;
+  font-size:80px;
+  color:rgba(255,255,255,0.04);
+  font-weight:600;
 }
 
 .quote-item:hover{
-  border:1px solid #ffffff;
-  transform:translateY(-3px);
-  background:#141414;
+  transform:translateY(-5px);
+  border-left:3px solid #00bfff;
+  background:#181818;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
+
+.quote-item p{
+  font-size:14px;
+  line-height:1.6;
+  font-weight:500;
+}
+
+.quote-author{
+  display:block;
+  margin-top:10px;
+  font-size:12px;
+  letter-spacing:1px;
+  opacity:0.6;
+}
+
+.quote-container{
+  max-height:0;
+  overflow:hidden;
+  transition:0.6s ease;
+}
+
+.quote-container.active{
+  max-height:1000px;
+  }
 
 .footer{
   text-align:center;
@@ -310,38 +349,38 @@ src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
 <div class="card">
   <h2 onclick="toggleQuotes()" style="cursor:pointer;">[ QUOTE ]</h2>
 
-  <div id="quoteList" style="display:none; margin-top:15px;">
+  <div id="quoteList" class="quote-container">
 
     <div class="quote-item">
       <p style="font-weight:600;">
         “I choose solitude over noise, clarity over approval.”
       </p>
-      <span style="opacity:0.5; font-size:12px;">— Dev</span>
+      <span class="quote-author">— Dev</span>
     </div>
 
     <div class="quote-item">
       <p>“There is no God. No one directs the universe.”</p>
-      <span style="opacity:0.5; font-size:13px;">— Stephen Hawking</span>
+      <span class="quote-author">— Stephen Hawking</span>
     </div>
 
     <div class="quote-item">
       <p>“Without music, life would be a mistake.”</p>
-      <span style="opacity:0.5; font-size:12px;">— Friedrich Nietzsche</span>
+      <span class="quote-author">— Friedrich Nietzsche</span>
     </div>
 
     <div class="quote-item">
       <p>“I consider myself to be a genius who happens to play chess.”</p>
-      <span style="opacity:0.5; font-size:12px;">— Bobby Fischer</span>
-    </div>
-
-    <div class="quote-item">
-      <p>“An honest man is always a child.”</p>
-      <span style="opacity:0.5; font-size:12px;">— Socrates</span>
+      <span class="quote-author">— Bobby Fischer</span>
     </div>
 
     <div class="quote-item">
       <p>“You will never be happy if you continue to search for what happiness consists of.”</p>
-      <span style="opacity:0.5; font-size:12px;">— Albert Camus</span>
+      <span class="quote-author">— Albert Camus</span>
+    </div>
+    
+    <div class="quote-item">
+      <p>“An honest man is always a child.”</p>
+      <span class="quote-author">— Socrates</span>
     </div>
 
   </div>
@@ -416,13 +455,9 @@ setInterval(()=>updateNowPlaying(token),3000);
 <script>
 function toggleQuotes(){
   const quoteSection = document.getElementById("quoteList");
-  
-  if(quoteSection.style.display === "none"){
-    quoteSection.style.display = "block";
-  } else {
-    quoteSection.style.display = "none";
-  }
+  quoteSection.classList.toggle("active");
 }
+
 </script>
   
 </body>
