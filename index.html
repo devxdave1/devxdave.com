@@ -230,45 +230,6 @@ a:hover{
   max-height:1000px;
   }
 
-.quote-title{
-  font-size:11px;
-  opacity:0.6;
-  cursor:pointer;
-  transition:0.3s ease;
-}
-
-.quote-title:hover{
-  opacity:1;
-  letter-spacing:1px;
-  }
-
-.chess-app{
-  padding:25px;
-}
-
-.chess-icon{
-  width:70px;
-  height:70px;
-  border-radius:18px;
-  transition:0.3s ease;
-  box-shadow:0 6px 20px rgba(0,0,0,0.5);
-}
-
-.chess-app a{
-  display:inline-block;
-}
-
-.chess-app:hover .chess-icon{
-  transform:scale(1.1);
-}
-
-.chess-label{
-  margin-top:10px;
-  font-size:12px;
-  opacity:0.7;
-  letter-spacing:1px;
-}
-
 .footer{
   text-align:center;
   font-size:12px;
@@ -329,14 +290,6 @@ src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
 </div>
 </div>
 
-<!-- CHESS APP -->
-<div class="card chess-app" style="text-align:center;">
-  <a href="https://www.chess.com/member/devxdave" target="_blank">
-    <img src="IMG_20260215_212650.jpg" class="chess-icon">
-    <div class="chess-label">Chess.com</div>
-  </a>
-</div>
-
 <!-- BASIC INFO -->
 <div class="card">
 <h2>[ BASIC_INFO ]</h2>
@@ -394,7 +347,7 @@ src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
 
 <!-- QUOTE -->
 <div class="card">
-  <h2 class="quote-title" onclick="toggleQuotes()">[ QUOTE ]</h2>
+  <h2 onclick="toggleQuotes()" style="cursor:pointer;">[ QUOTE ]</h2>
 
   <div id="quoteList" class="quote-container">
 
@@ -508,4 +461,5 @@ function toggleQuotes(){
 </script>
   
 </body>
-</html>
+  </html>
+  
