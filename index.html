@@ -185,6 +185,76 @@ a:hover{
   margin-top:4px;
 }
 
+/* SPOTIFY CARD STYLE */
+
+.spotify-card-container{
+  padding:18px;
+}
+
+.spotify-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  opacity:0.7;
+  margin-bottom:12px;
+}
+
+.spotify-icon{
+  color:#1db954;
+  font-size:14px;
+}
+
+.spotify-row{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.spotify-album{
+  width:65px;
+  height:65px;
+  border-radius:10px;
+  object-fit:cover;
+}
+
+.spotify-info{
+  flex:1;
+}
+
+.spotify-title{
+  font-size:15px;
+  font-weight:600;
+}
+
+.spotify-artist{
+  font-size:13px;
+  opacity:0.7;
+  margin-bottom:6px;
+}
+
+.spotify-bar{
+  height:4px;
+  background:#2a2a2a;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.spotify-progress{
+  height:100%;
+  width:0%;
+  background:#1db954;
+  transition:width 1s linear;
+}
+
+.spotify-time{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  opacity:0.6;
+  margin-top:4px;
+  }
+
 .social-icons{
   display:flex;
   justify-content:center;
@@ -332,8 +402,8 @@ a:hover{
 
 <div class="content">
 
-<!-- MINIMAL DISCORD SPOTIFY -->
-<div class="spotify-minimal">
+<!-- SPOTIFY -->
+<div class="card spotify-card-container">
 
 <div class="spotify-top">
 <i class="fab fa-spotify spotify-icon"></i>
