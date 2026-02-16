@@ -553,17 +553,11 @@ const redirectUri="https://devxdave1.github.io/devxdave.com/";
 const scopes="user-read-currently-playing user-read-playback-state";
 
 function getToken(){
-const hash=window.location.hash;
-if(hash){
-return new URLSearchParams(hash.substring(1)).get("access_token");
-}else{
-const auth="https://accounts.spotify.com/authorize"+
-"?response_type=token"+
-"&client_id="+clientId+
-"&scope="+encodeURIComponent(scopes)+
-"&redirect_uri="+encodeURIComponent(redirectUri);
-window.location=auth;
-}
+  const hash = window.location.hash;
+  if(hash){
+    return new URLSearchParams(hash.substring(1)).get("access_token");
+  }
+  return null; // HUWAG NA MAG REDIRECT
 }
 
 async function updateNowPlaying(token){
@@ -613,8 +607,11 @@ format(data.item.duration_ms);
 }catch(err){console.log(err);}
 }
 
-const token=getToken();
-setInterval(()=>updateNowPlaying(token),3000);
+const token = getToken();
+
+if(token){
+  setInterval(()=>updateNowPlaying(token),3000);
+}
 </script>
 
 <script>
