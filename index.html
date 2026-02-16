@@ -407,7 +407,7 @@ a:hover{
 
 <div class="spotify-top">
 <i class="fab fa-spotify spotify-icon"></i>
-<span class="spotify-text">Listening to Spotify</span>
+<span id="spotifyStatus" class="spotify-text">Spotify</span>
 </div>
 
 <div class="spotify-row">
@@ -568,6 +568,7 @@ const res=await fetch(
 );
 
 if(res.status===204||res.status>400){
+document.getElementById("spotifyStatus").textContent="Spotify";
 document.getElementById("title").textContent="Not Playing";
 document.getElementById("artist").textContent="";
 document.getElementById("progress").style.width="0%";
@@ -578,6 +579,12 @@ return;
 }
 
 const data=await res.json();
+
+if(data && data.is_playing){
+  document.getElementById("spotifyStatus").textContent="Listening to Spotify";
+}else{
+  document.getElementById("spotifyStatus").textContent="Spotify";
+  }
 
 document.getElementById("title").textContent=data.item.name;
 document.getElementById("artist").textContent=
