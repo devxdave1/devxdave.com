@@ -115,47 +115,73 @@ a:hover{
   transform:translateX(6px);
 }
 
-/* SPOTIFY */
-  .spotify-cover{
-  width:24px !important;
-  height:24px !important;
-  border-radius:5px;
-  object-fit:cover;
-  }
+/* DISCORD STYLE SPOTIFY */
 
-  .spotify-card{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:#0f0f0f;
+.spotify-discord {
+  background: linear-gradient(135deg,#1e1e2f,#121212);
+  border-radius:20px;
+  padding:18px;
   border:1px solid #1f1f1f;
-  border-radius:14px;
-  padding:10px 12px;
-  }
-
-.spotify-title{
-  font-size:13px;
-  font-weight:600;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
-  .spotify-bar{
-  height:4px;
-  margin-top:6px;
-  background:#1f1f1f;
+.spotify-header {
+  font-size:12px;
+  opacity:0.6;
+  margin-bottom:12px;
+  letter-spacing:1px;
+}
+
+.spotify-main {
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.spotify-cover-large {
+  width:70px;
+  height:70px;
+  border-radius:12px;
+  object-fit:cover;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+}
+
+.spotify-info {
+  flex:1;
+}
+
+.spotify-title {
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.spotify-artist {
+  font-size:13px;
+  opacity:0.7;
+}
+
+.spotify-bar {
+  height:5px;
+  background:#2a2a2a;
   border-radius:10px;
-  }
-.spotify-progress{
+  margin-top:12px;
+  overflow:hidden;
+}
+
+.spotify-progress {
   height:100%;
   width:0%;
-  background:#ffffff;
+  background:#1db954;
   transition:width 1s linear;
 }
 
- .spotify-cover{
-  width:32px;
-  height:32px;
-  border-radius:6px;
-  object-fit:cover;
+.spotify-time {
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  opacity:0.6;
+  margin-top:6px;
 }
 
 .social-icons{
@@ -311,23 +337,33 @@ a:hover{
   <a href="https://open.spotify.com/user/31v6zmei5tj4aav3kglmjxy2ttbe?si=SBwZwPVzQR2Eiz9V2S7MKQ">[ SPOTIFY ]</a>
 </h2>
 
-<div id="spotifyCard" class="spotify-card">
+<div class="spotify-discord">
 
-<img 
-class="spotify-cover"
+<div class="spotify-header">
+Listening to Spotify 🎧
+</div>
+
+<div class="spotify-main">
+
+<img id="cover"
+class="spotify-cover-large"
 src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
 />
 
-<div style="flex:1">
-<div id="status" class="spotify-status">Connecting to Spotify...</div>
+<div class="spotify-info">
 <div id="title" class="spotify-title">Not Playing</div>
 <div id="artist" class="spotify-artist"></div>
 
 <div class="spotify-bar">
 <div id="progress" class="spotify-progress"></div>
 </div>
+
+<div class="spotify-time">
+<span id="current">0:00</span>
+<span id="duration">0:00</span>
 </div>
 
+</div>
 </div>
 </div>
 
@@ -470,24 +506,38 @@ const res=await fetch(
 );
 
 if(res.status===204||res.status>400){
-document.getElementById("status").textContent="Not Playing";
 document.getElementById("title").textContent="No active track";
 document.getElementById("artist").textContent="";
 document.getElementById("progress").style.width="0%";
-document.getElementById("spotifyCard").classList.remove("active");
+document.getElementById("current").textContent="0:00";
+document.getElementById("duration").textContent="0:00";
 return;
 }
 
 const data=await res.json();
 
-document.getElementById("status").textContent="Listening on Spotify";
 document.getElementById("title").textContent=data.item.name;
 document.getElementById("artist").textContent=
 data.item.artists.map(a=>a.name).join(", ");
 
+document.getElementById("cover").src=
+data.item.album.images[0].url;
+
 const percent=(data.progress_ms/data.item.duration_ms)*100;
 document.getElementById("progress").style.width=percent+"%";
-document.getElementById("spotifyCard").classList.add("active");
+
+function format(ms){
+const totalSeconds=Math.floor(ms/1000);
+const minutes=Math.floor(totalSeconds/60);
+const seconds=totalSeconds%60;
+return minutes+":"+(seconds<10?"0":"")+seconds;
+}
+
+document.getElementById("current").textContent=
+format(data.progress_ms);
+
+document.getElementById("duration").textContent=
+format(data.item.duration_ms);
 
 }catch(err){console.log(err);}
 }
