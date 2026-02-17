@@ -487,8 +487,7 @@ style="display:none;"
 </div>
 
 </div>
-
-<!-- NOW WATCHING -->
+  
 <!-- NOW WATCHING -->
 <div id="watchingCard" class="card" style="display:none;">
 
@@ -834,9 +833,6 @@ function setWatching(title, episode, imageUrl){
   }
 }
 
-/* Default (walang lalabas) */
-setWatching("LOVE ALARM", "3", "images.jpeg");
-
 /* ===== FAKE 2 HOUR WATCH TIMER ===== */
 
 let watchInterval;
@@ -871,6 +867,13 @@ function startWatchTimer(){
   },1000);
 
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  setWatching("LOVE ALARM", "3", "images.jpeg");
+
+});
+  
 
 </script>
   
