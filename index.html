@@ -386,6 +386,34 @@ a:hover{
   display: block;
   opacity: 1;
 }
+
+.small-toggle-card{
+  padding: 15px;
+}
+
+.toggle-header{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.toggle-header h2{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.quote-list,
+.favorite-list{
+  display: none;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.quote-list.active,
+.favorite-list.active{
+  display: block;
+}
   
   </style>
 </head>
@@ -492,14 +520,23 @@ style="display:none;"
 </div>
   
 <!-- FAVORITES -->
-<div class="card">
-  <h2 onclick="toggleFavorites()">[ FAVORITES ]</h2>
+<div class="card small-toggle-card">
+
+  <div class="toggle-header">
+    <h2 onclick="toggleQuotes()">[ QUOTES ]</h2>
+    <h2 onclick="toggleFavorites()">[ FAVORITES ]</h2>
+  </div>
+
+  <div id="quoteList" class="quote-list">
+    <!-- quotes mo dito -->
+  </div>
 
   <div id="favoriteList" class="favorite-list">
     <p>Artist: Clairo</p>
     <p>Anime: Attack on Titan</p>
     <p>Game: Chess</p>
   </div>
+
 </div>
 
 <!-- QUOTE -->
