@@ -385,7 +385,16 @@ a:hover{
   gap:15px;
   margin-bottom:10px;
 }
-  
+
+.favorite-card{
+  display:none;
+  margin-top:10px;
+}
+
+.favorite-card.active{
+  display:block;
+}
+
   </style>
 </head>
 
@@ -541,18 +550,21 @@ style="display:none;"
   </div>
 
   <!-- FAVORITES -->
-  <div id="favoriteList" class="quote-container">
+  <div id="favoriteList" class="favorite-card">
 
-    <div class="quote-item"><p><span class="label">Color:</span> Blue, Dark Blue, Black</p></div>
-    <div class="quote-item"><p><span class="label">Food:</span> Pizza</p></div>
-    <div class="quote-item"><p><span class="label">Drink:</span> Matcha, Coca-Cola</p></div>
-    <div class="quote-item"><p><span class="label">Music:</span> K-pop, Indie Pop</p></div>
-    <div class="quote-item"><p><span class="label">Artist:</span> Clairo</p></div>
-    <div class="quote-item"><p><span class="label">K-Artist:</span> Kim You-jung</p></div>
-    <div class="quote-item"><p><span class="label">K-Idol:</span> Hanni Pham</p></div>
-    <div class="quote-item"><p><span class="label">Movie:</span> Dead Poets Society</p></div>
-    <div class="quote-item"><p><span class="label">K-Movie:</span> 20th Century Girl</p></div>
-    <div class="quote-item"><p><span class="label">K-Drama:</span> Twinkling Watermelon</p></div>
+  <div class="card">
+    <h2>[ FAVORITES ]</h2>
+
+    <p><span class="label">Color:</span> Blue, Dark Blue, Black</p>
+    <p><span class="label">Food:</span> Pizza</p>
+    <p><span class="label">Drink:</span> Matcha, Coca-Cola</p>
+    <p><span class="label">Music:</span> K-pop, Indie Pop</p>
+    <p><span class="label">Artist:</span> Clairo, Beabadoobee</p>
+    <p><span class="label">K-Artist:</span> Kim You-jung</p>
+    <p><span class="label">K-Idol:</span> Hanni Pham</p>
+    <p><span class="label">Movie:</span> Dead Poets Society</p>
+    <p><span class="label">K-Movie:</span> 20th Century Girl</p>
+    <p><span class="label">K-Drama:</span> Twinkling Watermelon</p>
 
   </div>
 
