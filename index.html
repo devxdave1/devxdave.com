@@ -375,16 +375,15 @@ a:hover{
   color: inherit;
 }
 
-.favorite-list{
-  display: none;
-  margin-top: 10px;
-  opacity: 0;
-  transition: all 0.3s ease;
+.toggle-wrapper{
+  margin-bottom:18px;
 }
 
-.favorite-list.active{
-  display: block;
-  opacity: 1;
+.toggle-buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:10px;
 }
   
   </style>
@@ -490,25 +489,21 @@ style="display:none;"
 </a>
 
 </div>
-  
-<!-- FAVORITES -->
-<div class="card">
-  <h2 onclick="toggleFavorites()">[ FAVORITES ]</h2>
-
-  <div id="favoriteList" class="favorite-list">
-    <p>Artist: Clairo</p>
-    <p>Anime: Attack on Titan</p>
-    <p>Game: Chess</p>
-  </div>
-</div>
 
 <!-- QUOTE -->
-<div class="quote-wrapper">
+<div class="toggle-wrapper">
 
-  <div class="quote-button" onclick="toggleQuotes()">
-    [ QUOTE ]
+  <div class="toggle-buttons">
+    <div class="quote-button" onclick="toggleQuotes()">
+      [ QUOTE ]
+    </div>
+
+    <div class="quote-button" onclick="toggleFavorites()">
+      [ FAVORITES ]
+    </div>
   </div>
 
+  <!-- QUOTES -->
   <div id="quoteList" class="quote-container">
 
     <div class="quote-item">
@@ -537,13 +532,30 @@ style="display:none;"
       <p>“You will never be happy if you continue to search for what happiness consists of.”</p>
       <span class="quote-author">— Albert Camus</span>
     </div>
-    
+
     <div class="quote-item">
       <p>“An honest man is always a child.”</p>
       <span class="quote-author">— Socrates</span>
     </div>
 
   </div>
+
+  <!-- FAVORITES -->
+  <div id="favoriteList" class="quote-container">
+
+    <div class="quote-item"><p><span class="label">Color:</span> Blue, Dark Blue, Black</p></div>
+    <div class="quote-item"><p><span class="label">Food:</span> Pizza</p></div>
+    <div class="quote-item"><p><span class="label">Drink:</span> Matcha, Coca-Cola</p></div>
+    <div class="quote-item"><p><span class="label">Music:</span> K-pop, Indie Pop</p></div>
+    <div class="quote-item"><p><span class="label">Artist:</span> Clairo</p></div>
+    <div class="quote-item"><p><span class="label">K-Artist:</span> Kim You-jung</p></div>
+    <div class="quote-item"><p><span class="label">K-Idol:</span> Hanni Pham</p></div>
+    <div class="quote-item"><p><span class="label">Movie:</span> Dead Poets Society</p></div>
+    <div class="quote-item"><p><span class="label">K-Movie:</span> 20th Century Girl</p></div>
+    <div class="quote-item"><p><span class="label">K-Drama:</span> Twinkling Watermelon</p></div>
+
+  </div>
+
 </div>
   
 <!-- PERSONALITY -->
