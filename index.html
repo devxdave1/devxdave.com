@@ -826,6 +826,8 @@ function setWatching(title, episode, imageUrl){
     }
 
     card.style.display = "block";
+    
+    startWatchTimer();
 
   } else {
     card.style.display = "none";
@@ -834,10 +836,7 @@ function setWatching(title, episode, imageUrl){
 
 /* Default (walang lalabas) */
 setWatching("LOVE ALARM", "3", "images.jpeg");
-  ...
- startWatchTimer();
 
-/* ===== FAKE 2 HOUR WATCH TIMER ===== */
 /* ===== FAKE 2 HOUR WATCH TIMER ===== */
 
 let watchInterval;
