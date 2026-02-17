@@ -403,7 +403,7 @@ a:hover{
 <div class="content">
 
 <!-- SPOTIFY -->
-<div class="card spotify-card-container">
+<div id="spotifyCard" class="card spotify-card-container">
 
 <div class="spotify-top">
 <i class="fab fa-spotify spotify-icon"></i>
@@ -568,6 +568,10 @@ const res=await fetch(
 );
 
 if(res.status===204||res.status>400){
+document.getElementById("spotifyCard").style.display="none";
+return;
+}
+
 document.getElementById("spotifyStatus").textContent="Spotify";
 document.getElementById("title").textContent="Not Playing";
 document.getElementById("artist").textContent="";
@@ -581,6 +585,8 @@ return;
 const data=await res.json();
 
 if(data && data.is_playing){
+  document.getElementById("spotifyCard").style.display="block";
+
   document.getElementById("spotifyStatus").textContent="Listening to Spotify";
 }else{
   document.getElementById("spotifyStatus").textContent="Spotify";
@@ -619,6 +625,11 @@ const token = getToken();
 if(token){
   setInterval(()=>updateNowPlaying(token),3000);
 }
+
+if(!token){
+  document.getElementById("spotifyCard").style.display="none";
+    }
+
 </script>
 
 <script>
@@ -627,7 +638,18 @@ function toggleQuotes(){
   quoteSection.classList.toggle("active");
 }
 
+function toggleSpotify(){
+  const card = document.getElementById("spotifyCard");
+  if(card.style.display==="none"){
+    card.style.display="block";
+  }else{
+    card.style.display="none";
+  }
+}
+
 </script>
+
+ <div class="spotify-toggle" onclick="toggleSpotify()"></div>
   
 </body>
   </html>
