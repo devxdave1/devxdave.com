@@ -833,39 +833,68 @@ function setWatching(title, episode, imageUrl){
   }
 }
 
-/* ===== FAKE 2 HOUR WATCH TIMER ===== */
+/* ===== PERSISTENT 2 HOUR WATCH TIMER ===== */
 
 let watchInterval;
-const totalDuration = 120 * 60;
+const totalDuration = 120 * 60; // 2 hours in seconds
 
 function startWatchTimer(){
-
-  let currentTime = 0;
 
   const progress = document.getElementById("watchProgress");
   const currentLabel = document.getElementById("watchCurrent");
 
   clearInterval(watchInterval);
 
+  // Kunin saved time
+  let savedTime = localStorage.getItem("watchTime");
+  let currentTime = savedTime ? parseInt(savedTime) : 0;
+
+  updateUI(currentTime);
+
   watchInterval = setInterval(()=>{
 
     currentTime++;
 
-    const percent = (currentTime / totalDuration) * 100;
-    progress.style.width = percent + "%";
-
-    const minutes = Math.floor(currentTime / 60);
-    const seconds = currentTime % 60;
-
-    currentLabel.textContent =
-      minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-
     if(currentTime >= totalDuration){
+      currentTime = totalDuration;
       clearInterval(watchInterval);
     }
 
-  },1000);
+    localStorage.setItem("watchTime", currentTime);
+    updateUI(currentTime);
 
+  },1000);
+}
+
+
+function updateUI(currentTime){
+
+  const progress = document.getElementById("watchProgress");
+  const currentLabel = document.getElementById("watchCurrent");
+
+  const percent = (currentTime / totalDuration) * 100;
+  progress.style.width = percent + "%";
+
+  const hours = Math.floor(currentTime / 3600);
+  const minutes = Math.floor((currentTime % 3600) / 60);
+  const seconds = currentTime % 60;
+
+  if(hours > 0){
+    currentLabel.textContent =
+      hours + ":" +
+      (minutes < 10 ? "0" : "") + minutes + ":" +
+      (seconds < 10 ? "0" : "") + seconds;
+  } else {
+    currentLabel.textContent =
+      minutes + ":" +
+      (seconds < 10 ? "0" : "") + seconds;
+  }
+}
+
+
+/* OPTIONAL: Reset kapag nag change ka ng episode */
+function resetWatchTimer(){
+  localStorage.removeItem("watchTime");
 }
 
 document.addEventListener("DOMContentLoaded", function(){
