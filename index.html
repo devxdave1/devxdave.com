@@ -513,7 +513,11 @@ style="display:none;"
   <!-- QUOTES -->
     <div class="quote-button" onclick="toggleFavorites()">
       [ FAVORITES ]
-    </div>
+</div>
+
+  <div class="quote-button" onclick="toggleJournal()">
+  [ JOURNAL ]
+   </div>
   </div>
 
   <!-- QUOTES -->
@@ -572,6 +576,15 @@ style="display:none;"
   </div>
 
  </div>
+  <!-- JOURNAL -->
+<div id="journalCard" class="favorites-container">
+
+  <div class="card">
+    <h2>[ JOURNAL ]</h2>
+    <p>No journal entries yet. Maybe next time.</p>
+  </div>
+
+</div>
   
 <!-- WATCHLIST -->
 <div class="card watchlist">
@@ -689,24 +702,42 @@ if(!token){
 function toggleQuote(){
   const quote = document.getElementById("quoteList");
   const fav = document.getElementById("favoritesCard");
+  const journal = document.getElementById("journalCard");
 
   if(quote.classList.contains("active")){
     quote.classList.remove("active");
   } else {
     quote.classList.add("active");
     fav.classList.remove("active");
+    journal.classList.remove("active");
   }
 }
-
+    
 function toggleFavorites(){
   const quote = document.getElementById("quoteList");
   const fav = document.getElementById("favoritesCard");
+  const journal = document.getElementById("journalCard");
 
   if(fav.classList.contains("active")){
     fav.classList.remove("active");
   } else {
     fav.classList.add("active");
     quote.classList.remove("active");
+    journal.classList.remove("active");
+  }
+}
+
+function toggleJournal(){
+  const quote = document.getElementById("quoteList");
+  const fav = document.getElementById("favoritesCard");
+  const journal = document.getElementById("journalCard");
+
+  if(journal.classList.contains("active")){
+    journal.classList.remove("active");
+  } else {
+    journal.classList.add("active");
+    quote.classList.remove("active");
+    fav.classList.remove("active");
   }
 }
 
