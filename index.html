@@ -374,6 +374,18 @@ a:hover{
   background: transparent;
   color: inherit;
 }
+
+.favorite-list{
+  display: none;
+  margin-top: 10px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.favorite-list.active{
+  display: block;
+  opacity: 1;
+}
   
   </style>
 </head>
@@ -481,17 +493,13 @@ style="display:none;"
   
 <!-- FAVORITES -->
 <div class="card">
-<h2>[ FAVORITES ]</h2>
-<p><span class="label">Color:</span> Blue, Dark Blue, Black</p>
-<p><span class="label">Food:</span> Pizza</p>
-<p><span class="label">Drink:</span> Matcha, Coca-Cola</p>
-<p><span class="label">Music:</span> K-pop, Indie Pop</p>
-<p><span class="label">Artist:</span> Clairo</p>
-<p><span class="label">K-Artist:</span> Kim You-jung</p>
-<p><span class="label">K-Idol:</span> Hanni Pham</p>
-<p><span class="label">Movie:</span> Dead Poets Society</p>
-<p><span class="label">K-Movie:</span> 20th Century Girl</p>
-<p><span class="label">K-Drama:</span> Twinkling Watermelon</p>
+  <h2 onclick="toggleFavorites()">[ FAVORITES ]</h2>
+
+  <div id="favoriteList" class="favorite-list">
+    <p>Artist: Clairo</p>
+    <p>Anime: Attack on Titan</p>
+    <p>Game: Chess</p>
+  </div>
 </div>
 
 <!-- QUOTE -->
@@ -629,6 +637,11 @@ if(!token){
 function toggleQuotes(){
   const quoteSection = document.getElementById("quoteList");
   quoteSection.classList.toggle("active");
+}
+
+function toggleFavorites(){
+  const fav = document.getElementById("favoriteList");
+  fav.classList.toggle("active");
 }
 
 function toggleSpotify(){
