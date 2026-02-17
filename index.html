@@ -569,7 +569,7 @@ style="display:none;"
   </div>
 
   <!-- FAVORITES -->
-  <div id="favoriteList" class="favorite-card">
+ <div id="favoritesCard" class="favorites-container">
 
   <div class="card">
     <h2>[ FAVORITES ]</h2>
@@ -677,14 +677,28 @@ if(!token){
 </script>
 
 <script>
-function toggleQuotes(){
-  const quoteSection = document.getElementById("quoteList");
-  quoteSection.classList.toggle("active");
+function toggleQuote(){
+  const quote = document.getElementById("quoteList");
+  const fav = document.getElementById("favoritesCard");
+
+  if(quote.classList.contains("active")){
+    quote.classList.remove("active");
+  } else {
+    quote.classList.add("active");
+    fav.classList.remove("active");
+  }
 }
 
 function toggleFavorites(){
-  const fav = document.getElementById("favoriteList");
-  fav.classList.toggle("active");
+  const quote = document.getElementById("quoteList");
+  const fav = document.getElementById("favoritesCard");
+
+  if(fav.classList.contains("active")){
+    fav.classList.remove("active");
+  } else {
+    fav.classList.add("active");
+    quote.classList.remove("active");
+  }
 }
 
 function toggleSpotify(){
