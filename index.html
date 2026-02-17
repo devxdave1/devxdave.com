@@ -396,6 +396,10 @@ a:hover{
   <a href="mailto:devxdave1@gmail.com?subject=Hello Dev">
   <i class="fas fa-envelope"></i>
 </a>
+
+ <a href="javascript:void(0);" onclick="toggleSpotify()">
+  <i class="fab fa-spotify"></i>
+</a>
 </div>
 
 </div>
@@ -403,7 +407,7 @@ a:hover{
 <div class="content">
 
 <!-- SPOTIFY -->
-<div id="spotifyCard" class="card spotify-card-container">
+<div id="spotifyCard" class="card spotify-card-container" style="display:none;">
 
 <div class="spotify-top">
 <i class="fab fa-spotify spotify-icon"></i>
@@ -637,8 +641,6 @@ function toggleSpotify(){
 }
 
 </script>
-
- <div class="spotify-toggle" onclick="toggleSpotify()"></div>
   
 </body>
   </html>
