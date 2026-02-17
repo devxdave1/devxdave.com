@@ -572,25 +572,15 @@ document.getElementById("spotifyCard").style.display="none";
 return;
 }
 
-document.getElementById("spotifyStatus").textContent="Spotify";
-document.getElementById("title").textContent="Not Playing";
-document.getElementById("artist").textContent="";
-document.getElementById("progress").style.width="0%";
-document.getElementById("current").textContent="0:00";
-document.getElementById("duration").textContent="0:00";
-document.getElementById("cover").style.display="none";
+const data=await res.json();
+
+if(!data || !data.is_playing){
+document.getElementById("spotifyCard").style.display="none";
 return;
 }
 
-const data=await res.json();
-
-if(data && data.is_playing){
-  document.getElementById("spotifyCard").style.display="block";
-
-  document.getElementById("spotifyStatus").textContent="Listening to Spotify";
-}else{
-  document.getElementById("spotifyStatus").textContent="Spotify";
-  }
+document.getElementById("spotifyCard").style.display="block";
+document.getElementById("spotifyStatus").textContent="Listening to Spotify";
 
 document.getElementById("title").textContent=data.item.name;
 document.getElementById("artist").textContent=
@@ -598,7 +588,6 @@ data.item.artists.map(a=>a.name).join(", ");
 
 document.getElementById("cover").src =
 data.item.album.images[0].url;
-
 document.getElementById("cover").style.display = "block";
 
 const percent=(data.progress_ms/data.item.duration_ms)*100;
