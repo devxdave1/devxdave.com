@@ -488,6 +488,13 @@ style="display:none;"
 
 </div>
 
+<!-- NOW WATCHING -->
+<div id="watchingCard" class="card" style="display:none;">
+  <h2>[ NOW WATCHING ]</h2>
+  <p><span class="label">Title:</span> <span id="watchTitle"></span></p>
+  <p><span class="label">Episode:</span> <span id="watchEpisode"></span></p>
+</div>
+
 <!-- BASIC INFO -->
 <div class="card">
 <h2>[ BASIC_INFO ]</h2>
@@ -749,6 +756,25 @@ function toggleSpotify(){
     card.style.display="none";
   }
 }
+
+/* ===== NOW WATCHING SYSTEM ===== */
+
+function setWatching(title, episode){
+  const card = document.getElementById("watchingCard");
+  const titleEl = document.getElementById("watchTitle");
+  const episodeEl = document.getElementById("watchEpisode");
+
+  if(title && episode){
+    titleEl.textContent = title;
+    episodeEl.textContent = episode;
+    card.style.display = "block";
+  } else {
+    card.style.display = "none";
+  }
+}
+
+/* Example default (pwede mo palitan anytime) */
+setWatching("LOVE ALARM", "3");
 
 </script>
   
