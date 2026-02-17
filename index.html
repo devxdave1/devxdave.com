@@ -490,9 +490,25 @@ style="display:none;"
 
 <!-- NOW WATCHING -->
 <div id="watchingCard" class="card" style="display:none;">
+
   <h2>[ NOW WATCHING ]</h2>
-  <p><span class="label">Title:</span> <span id="watchTitle"></span></p>
-  <p><span class="label">Episode:</span> <span id="watchEpisode"></span></p>
+
+  <div style="display:flex; gap:15px; align-items:center;">
+
+    <img id="watchImage"
+         style="width:90px; height:120px; object-fit:cover; border-radius:12px; display:none;" />
+
+    <div>
+      <p><span class="label">Title:</span> 
+        <span id="watchTitle"></span>
+      </p>
+
+      <p><span class="label">Episode:</span> 
+        <span id="watchEpisode"></span>
+      </p>
+    </div>
+
+  </div>
 </div>
 
 <!-- BASIC INFO -->
@@ -757,24 +773,36 @@ function toggleSpotify(){
   }
 }
 
-/* ===== NOW WATCHING SYSTEM ===== */
+/* ===== NOW WATCHING WITH IMAGE ===== */
 
-function setWatching(title, episode){
+function setWatching(title, episode, imageUrl){
+
   const card = document.getElementById("watchingCard");
   const titleEl = document.getElementById("watchTitle");
   const episodeEl = document.getElementById("watchEpisode");
+  const imageEl = document.getElementById("watchImage");
 
-  if(title && episode){
+  if(title){
+
     titleEl.textContent = title;
-    episodeEl.textContent = episode;
+    episodeEl.textContent = episode || "";
+
+    if(imageUrl){
+      imageEl.src = imageUrl;
+      imageEl.style.display = "block";
+    } else {
+      imageEl.style.display = "none";
+    }
+
     card.style.display = "block";
+
   } else {
     card.style.display = "none";
   }
 }
 
-/* Example default (pwede mo palitan anytime) */
-setWatching("LOVE ALARM", "3");
+/* Default (walang lalabas) */
+setWatching("", "", "");
 
 </script>
   
