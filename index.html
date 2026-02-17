@@ -511,6 +511,36 @@ style="display:none;"
   </div>
 </div>
 
+  <!-- WATCH TIMER -->
+<div style="margin-top:12px;">
+
+  <div style="height:5px;
+              background:#2a2a2a;
+              border-radius:10px;
+              overflow:hidden;">
+
+    <div id="watchProgress"
+         style="height:100%;
+                width:0%;
+                background:#ffffff;
+                transition:width 1s linear;">
+    </div>
+
+  </div>
+
+  <div style="display:flex;
+              justify-content:space-between;
+              font-size:11px;
+              opacity:0.6;
+              margin-top:4px;">
+
+    <span id="watchCurrent">0:00</span>
+    <span>2:00:00</span>
+
+  </div>
+
+</div>
+
 <!-- BASIC INFO -->
 <div class="card">
 <h2>[ BASIC_INFO ]</h2>
@@ -796,6 +826,8 @@ function setWatching(title, episode, imageUrl){
 
     card.style.display = "block";
 
+    startWatchTimer();
+
   } else {
     card.style.display = "none";
   }
@@ -803,6 +835,41 @@ function setWatching(title, episode, imageUrl){
 
 /* Default (walang lalabas) */
 setWatching("LOVE ALARM", "3", "images.jpeg");
+
+/* ===== FAKE 2 HOUR WATCH TIMER ===== */
+
+let watchInterval;
+const totalDuration = 120 * 60; // 120 minutes in seconds
+
+function startWatchTimer(){
+
+  let currentTime = 0;
+
+  const progress = document.getElementById("watchProgress");
+  const currentLabel = document.getElementById("watchCurrent");
+
+  clearInterval(watchInterval);
+
+  watchInterval = setInterval(()=>{
+
+    currentTime++;
+
+    const percent = (currentTime / totalDuration) * 100;
+    progress.style.width = percent + "%";
+
+    const minutes = Math.floor(currentTime / 60);
+    const seconds = currentTime % 60;
+
+    currentLabel.textContent =
+      minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+    if(currentTime >= totalDuration){
+      clearInterval(watchInterval);
+    }
+
+  },1000);
+
+  {
 
 </script>
   
