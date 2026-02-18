@@ -445,6 +445,35 @@ a:hover{
   height: 18px;
 }
 
+.chess-app{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#111;
+  padding:14px;
+  border-radius:16px;
+  border:1px solid #1f1f1f;
+  transition:0.3s ease;
+}
+
+.chess-app:hover{
+  transform:translateY(-4px);
+  background:#1a1a1a;
+  box-shadow:0 8px 20px rgba(0,0,0,0.6);
+}
+
+.chess-icon{
+  width:55px;
+  height:55px;
+  border-radius:14px;
+  object-fit:cover;
+}
+
+.chess-app span{
+  font-size:15px;
+  font-weight:600;
+  }
+
   </style>
 </head>
 
@@ -662,6 +691,23 @@ style="display:none;"
     <h2>JOURNAL</h2>
     <p>No journal entries yet. Maybe next time.</p>
   </div>
+
+</div>
+
+<!-- CHESS APP LINK -->
+<div class="card">
+
+  <h2>CHESS</h2>
+
+  <a href="https://www.chess.com/member/DaveChristopherr"
+     target="_blank"
+     class="chess-app">
+
+    <img src="chesscom.png" class="chess-icon">
+
+    <span>Chess.com</span>
+
+  </a>
 
 </div>
   
