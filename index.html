@@ -539,7 +539,8 @@ style="display:none;"
                     margin-top:4px;">
 
           <span id="watchCurrent">0:00</span>
-          <span>2:00:00</span>
+<span>1:00:00</span>
+          
 
         </div>
 
@@ -849,6 +850,8 @@ function startWatchTimer(){
 
   const progress = document.getElementById("watchProgress");
   const currentLabel = document.getElementById("watchCurrent");
+
+  document.getElementById("watchTotal").textContent = "1:00:00";
 
   clearInterval(watchInterval);
 
