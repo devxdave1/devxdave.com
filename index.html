@@ -424,6 +424,14 @@ a:hover{
   max-height:1000px;
 }
 
+.watching-img {
+    width: 120px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
   </style>
 </head>
 
@@ -836,8 +844,7 @@ function setWatching(title, episode, imageUrl){
 /* ===== PERSISTENT 2 HOUR WATCH TIMER ===== */
 
 let watchInterval;
-const totalDuration = 120 * 60; // 2 hours in seconds
-
+const totalDuration = 60 * 60; // 1 hour
 function startWatchTimer(){
 
   const progress = document.getElementById("watchProgress");
