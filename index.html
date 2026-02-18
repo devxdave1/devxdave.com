@@ -432,6 +432,19 @@ a:hover{
     margin-bottom: 10px;
 }
 
+.watching-title{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.netflix-logo{
+  width: 18px;
+  height: 18px;
+}
+
   </style>
 </head>
 
@@ -499,7 +512,11 @@ style="display:none;"
 <!-- NOW WATCHING -->
 <div id="watchingCard" class="card" style="display:none;">
 
-  <h2>[ WATCHING ]</h2>
+  <h2 class="watching-title">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg"
+       class="netflix-logo">
+  WATCHING
+  </h2>
 
   <div style="display:flex; gap:15px; align-items:center;">
 
