@@ -474,13 +474,39 @@ a:hover{
   font-weight:600;
   }
 
+.app-row{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin:25px 0;
+}
+
 .app-icon{
   display:flex;
   flex-direction:column;
   align-items:center;
-  width:90px;
+  width:75px;
   text-decoration:none;
-  margin:20px 0;
+}
+
+.app-icon img{
+  width:55px;
+  height:55px;
+  border-radius:16px;
+  object-fit:cover;
+  transition:0.2s ease;
+}
+
+.app-icon span{
+  margin-top:5px;
+  font-size:11px; /* MAS MALIIT */
+  color:white;
+  opacity:0.8;
+  letter-spacing:0.5px;
+}
+
+.app-icon:hover img{
+  transform:scale(1.08);
 }
 
 .app-icon img{
@@ -722,16 +748,34 @@ style="display:none;"
 
 </div>
 
-<!-- CHESS APP ICON -->
-<a href="https://www.chess.com/member/DaveChristopherr"
-   target="_blank"
-   class="app-icon">
+<!-- CHESS APPS -->
+<div class="app-row">
 
-  <img src="chess.com.jpg" class="app-img">
+  <!-- Chess.com -->
+  <a href="https://www.chess.com/member/DaveChristopherr"
+     target="_blank"
+     class="app-icon">
+    <img src="chess.com.jpg">
+    <span>chess.com</span>
+  </a>
 
-  <span>Chess.com</span>
+  <!-- Lichess -->
+  <a href="https://lichess.org/@/YOUR_LICHESS_USERNAME"
+     target="_blank"
+     class="app-icon">
+    <img src="lichess.png">
+    <span>lichess</span>
+  </a>
 
-</a>
+  <!-- ICC -->
+  <a href="https://www.chessclub.com/"
+     target="_blank"
+     class="app-icon">
+    <img src="ICC.png">
+    <span>icc</span>
+  </a>
+
+</div>
   
 <!-- WATCHLIST -->
 <div class="card watchlist">
