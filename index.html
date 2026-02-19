@@ -31,31 +31,8 @@ body{
 .app-bar{
   padding:40px 25px 25px;
   text-align:center;
+  background:#111111;
   border-bottom:1px solid #1f1f1f;
-  position:relative;
-  overflow:hidden;
-  background:#111;
-}
-
-.app-bar::before{
-  content:"";
-  position:absolute;
-  width:300%;
-  height:300%;
-  top:-100%;
-  left:-100%;
-  background: radial-gradient(circle, rgba(0,191,255,0.2), transparent 60%);
-  animation: rotateGlow 20s linear infinite;
-}
-
-@keyframes rotateGlow{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
-}
-
-.app-bar *{
-  position:relative;
-  z-index:1;
 }
 
 .profile-circle{
