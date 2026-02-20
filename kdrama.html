@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY K-DRAMA WATCHED</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body{
+  background:#0a0a0a;
+  color:#ffffff;
+  min-height:100vh;
+}
+
+/* TOP BAR */
+.app-bar{
+  padding:40px 25px 25px;
+  text-align:center;
+  background:#111111;
+  border-bottom:1px solid #1f1f1f;
+}
+
+.app-bar h1{
+  font-size:22px;
+  letter-spacing:3px;
+  font-weight:600;
+}
+
+.rating-row{
+  margin-top:8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  opacity:0.6;
+}
+
+.sort-btn{
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
+  padding:4px 8px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:12px;
+  transition:0.2s;
+}
+
+.sort-btn:hover{
+  background:#1a1a1a;
+}
+
+/* CONTENT */
+.content{
+  padding:20px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* DRAMA CARD */
+.drama-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#111111;
+  border:1px solid #1f1f1f;
+  border-radius:18px;
+  padding:18px 20px;
+  margin-bottom:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+  transition:0.3s ease;
+  text-decoration:none;
+  color:#ffffff;
+}
+
+.drama-card:hover{
+  transform:translateY(-4px);
+  background:#1a1a1a;
+}
+
+.title{
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.rating{
+  font-weight:600;
+  padding:6px 12px;
+  border-radius:12px;
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
+  font-size:13px;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:0.6;
+  margin-top:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app-bar">
+  <h1>MY K-DRAMA WATCHED</h1>
+
+  <div class="rating-row">
+    <span id="countText"></span>
+    <div class="sort-btn" onclick="toggleSort()">↑↓</div>
+  </div>
+</div>
+
+<div class="content">
+  <div id="dramaList"></div>
+  <div class="footer">©devxdave</div>
+</div>
+
+<script>
+const dramas = [
+{ title:"Pinocchio", rating:8},
+{ title:"Save Me", rating:8},
+{ title:"Are You Human?", rating:6},
+{ title:"Moving", rating:10},
+{ title:"Bring It On, Ghost", rating:7},
+{ title:"18 Again", rating:10},
+{ title:"All of Us Are Dead", rating:8},
+{ title:"Buried Hearts", rating:9},
+{ title:"Backstreet Rookie", rating:9},
+{ title:"Clean with Passion for Now", rating:9},
+{ title:"Class of Lies", rating:8},
+{ title:"Duty After School", rating:8},
+{ title:"Doona!", rating:8},
+{ title:"Extracurricular", rating:9},
+{ title:"High School Return of a Gangster", rating:8},
+{ title:"Hierarchy", rating:8},
+{ title:"Happiness", rating:9},
+{ title:"I'm Not a Robot", rating:7},
+{ title:"Love Revolution", rating:9},
+{ title:"My Demon", rating:8},
+{ title:"Money Heist: Korea – Joint Economic Area", rating:10},
+{ title:"Melo Movie", rating:8},
+{ title:"Night Has Come", rating:8},
+{ title:"Newtopia", rating:7},
+{ title:"Parasyte: The Grey", rating:8},
+{ title:"Pyramid Game", rating:9},
+{ title:"Revenge of Others", rating:9},
+{ title:"Sweet Home", rating:9},
+{ title:"Study Group", rating:8},
+{ title:"Squid Game S1", rating:10},
+{ title:"Strong Girl Bong-soon", rating:7},
+{ title:"The Frog", rating:8},
+{ title:"The Doctors", rating:7},
+{ title:"The 8 Show", rating:8},
+{ title:"Twinkling Watermelon", rating:10},
+{ title:"The Witch", rating:8},
+{ title:"The King of Pigs", rating:10},
+{ title:"When Life Gives You Tangerines", rating:8},
+{ title:"Weak Hero Class S1", rating:9},
+{ title:"Weak Hero Class S2", rating:8},
+{ title:"W", rating:7},
+{ title:"Zombie Detective", rating:9},
+{ title:"Motel California", rating:7},
+{ title:"Twenty Five Twenty One", rating:9},
+{ title:"Nine Puzzle", rating:7},
+{ title:"One High School Heroes", rating:8},
+{ title:"The Judge Returns", rating:7},
+{ title:"Trigger", rating:9},
+{ title:"Crushology 101", rating:7},
+{ title:"My Dearest Nemesis", rating:7},
+{ title:"Head Over Heels", rating:8},
+{ title:"Tastefully Yours", rating:7},
+{ title:"Namib", rating:6},
+{ title:"Unmasked", rating:6},
+{ title:"S Line", rating:7},
+{ title:"Light Shop", rating:8},
+{ title:"Squid Game S2", rating:9},
+{ title:"Squid Game S3", rating:8},
+{ title:"True Beauty", rating:7},
+{ title:"Cheer Up", rating:7},
+{ title:"Undercover High School", rating:9},
+{ title:"Serendipity’s Embrace", rating:9},
+{ title:"While You Were Sleeping", rating:7},
+{ title:"Goblin", rating:9},
+{ title:"Lovely Runner", rating:7},
+{ title:"When the Phone Rings", rating:9},
+{ title:"Spirit Fingers", rating:9},
+{ title:"Dear X", rating:8},
+{ title:"Genie, Make a Wish", rating:7},
+{ title:"My Troublesome Star", rating:7},
+{ title:"Karma", rating:9},
+{ title:"Would You Marry Me", rating:8},
+{ title:"Lovers of the Red Sky", rating:7},
+{ title:"Moonlight Drawn by Clouds", rating:9},
+{ title:"Taxi Driver S1", rating:9},
+{ title:"My Lovely Liar", rating:9},
+{ title:"D.P. S1", rating:8},
+{ title:"D.P. S2", rating:8},
+{ title:"Youth of May", rating:8},
+{ title:"Cashero", rating:9},
+{ title:"Nevertheless", rating:8},
+{ title:"Friendly Rivalry", rating:8},
+{ title:"The Manipulated", rating:9},
+{ title:"Spring Fever", rating:8},
+{ title:"Can This Love Be Translated?", rating:8},
+{ title:"Undercover Miss Hong", rating:8}
+];
+
+let highFirst = true;
+
+const dramaList = document.getElementById("dramaList");
+const countText = document.getElementById("countText");
+
+countText.textContent = dramas.length + " K-Dramas • Personal Ratings";
+
+function renderList(){
+  dramaList.innerHTML = "";
+
+  dramas.sort((a,b)=>{
+    return highFirst ? b.rating - a.rating : a.rating - b.rating;
+  });
+
+  dramas.forEach(drama=>{
+    const card=document.createElement("a");
+    card.className="drama-card";
+    card.href=`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(drama.title+" South Korean TV series")}`;
+    card.target="_blank";
+
+    card.innerHTML=`
+      <div class="title">${drama.title}</div>
+      <div class="rating">${drama.rating}/10</div>
+    `;
+
+    dramaList.appendChild(card);
+  });
+}
+
+function toggleSort(){
+  highFirst = !highFirst;
+  renderList();
+}
+
+renderList();
+</script>
+
+</body>
+</html>

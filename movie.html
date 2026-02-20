@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEVXDAVE Movies</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body{
+  background:#0a0a0a;
+  color:#ffffff;
+  min-height:100vh;
+}
+
+/* TOP BAR */
+.app-bar{
+  padding:40px 25px 25px;
+  text-align:center;
+  background:#111111;
+  border-bottom:1px solid #1f1f1f;
+}
+
+.app-bar h1{
+  font-size:22px;
+  letter-spacing:3px;
+  font-weight:600;
+}
+
+.rating-row{
+  margin-top:8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  opacity:0.6;
+}
+
+.sort-btn{
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
+  padding:4px 8px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:12px;
+  transition:0.2s;
+}
+
+.sort-btn:hover{
+  background:#1a1a1a;
+}
+
+/* CONTENT */
+.content{
+  padding:20px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#111111;
+  border:1px solid #1f1f1f;
+  border-radius:18px;
+  padding:18px 20px;
+  margin-bottom:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+  transition:0.3s ease;
+  text-decoration:none;
+  color:#ffffff;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  background:#1a1a1a;
+}
+
+.title{
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.rating{
+  font-weight:600;
+  padding:6px 12px;
+  border-radius:12px;
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
+  font-size:13px;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:0.6;
+  margin-top:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app-bar">
+  <h1>MY MOVIE & SERIES WATCHED</h1>
+
+  <div class="rating-row">
+    <span id="countText"></span>
+    <div class="sort-btn" onclick="toggleSort()">↑↓</div>
+  </div>
+</div>
+
+<div class="content">
+  <div id="itemList"></div>
+  <div class="footer">©devxdave</div>
+</div>
+
+<script>
+const items = [
+{ title:"Dead Poets Society", rating:10},
+{ title:"The Perks of Being a Wallflower", rating:8},
+{ title:"The Queen's Gambit", rating:9},
+{ title:"Pawn Sacrifice", rating:10},
+{ title:"The Social Network", rating:8},
+{ title:"Mr. Robot", rating:10},
+{ title:"Titanic", rating:10},
+{ title:"The Imitation Game", rating:10},
+{ title:"The Theory of Everything", rating:9},
+{ title:"The Playlist", rating:9},
+{ title:"Queen of Chess", rating:8},
+{ title:"Bobby Fischer Against the World", rating:9},
+{ title:"The Luzhin Defence", rating:8},
+{ title:"Searching for Bobby Fischer", rating:9},
+{ title:"Queen of Katwe", rating:8},
+{ title:"Life of a King", rating:9},
+{ title:"Tron", rating:8},
+{ title:"Source Code", rating:7},
+{ title:"Hackers", rating:9},
+{ title:"Jobs", rating:9},
+{ title:"Steve Jobs", rating:9},
+{ title:"Young Sheldon", rating:9},
+{ title:"The Notebook", rating:10},
+{ title:"Joker", rating:9},
+{ title:"Spider-Man", rating:10},
+{ title:"Spider-Man 2", rating:9},
+{ title:"Spider-Man 3", rating:8},
+{ title:"The Amazing Spider-Man", rating:9},
+{ title:"Spider-Man: Across the Spider-Verse", rating:8},
+{ title:"Spider-Man: Into the Spider-Verse", rating:8},
+{ title:"Captain America: Civil War", rating:8},
+{ title:"Thor", rating:9},
+{ title:"Alice in Borderland", rating:9},
+{ title:"Alive in Borderland S2", rating:8},
+{ title:"Alice in Borderland S3", rating:8},
+{ title:"The Garfield Movie", rating:8},
+{ title:"The Avengers", rating:8},
+{ title:"Minions: The Rise of Gru", rating:9},
+{ title:"Alvin and the Chipmunks", rating:8},
+{ title:"Home Alone", rating:9},
+{ title:"The Walking Dead", rating:8},
+{ title:"The SpongeBob Movie", rating:7},
+{ title:"Final Destination", rating:10},
+{ title:"Final Destination 2", rating:9},
+{ title:"Final Destination 3", rating:9},
+{ title:"Final Destination 4", rating:8},
+{ title:"Final Destination 5", rating:8},
+{ title:"Final Destination 6", rating:9},
+{ title:"Deadpool", rating:9},
+{ title:"World War Z", rating:7},
+{ title:"The Last of Us", rating:8},
+{ title:"Wicked: For Good", rating:7},
+{ title:"Coco", rating:8},
+{ title:"Kpop Demon Hunter", rating:8},
+{ title:"Superman: Legacy", rating:7},
+{ title:"Smurf", rating:8},
+{ title:"Selina's Gold", rating:9},
+{ title:"Toy Story", rating:8},
+{ title:"The Minecraft Movie", rating:7},
+{ title:"Frozen", rating:8},
+{ title:"Finding Nemo", rating:8},
+{ title:"Despicable Me 2", rating:8},
+{ title:"Minions", rating:8},
+{ title:"It", rating:8},
+{ title:"Up", rating:8},
+{ title:"Shrek", rating:8},
+{ title:"Cars", rating:8},
+{ title:"Big Hero 6", rating:10},
+{ title:"Rebel Ridge", rating:8},
+{ title:"Journey 2: The Mysterious Island", rating:9},
+{ title:"Maleficent", rating:8},
+{ title:"Man of Steel", rating:8},
+{ title:"Superman Returns", rating:7},
+{ title:"The Dark Knight", rating:8},
+{ title:"Kung Fu Panda", rating:8},
+{ title:"The Boss Baby", rating:8},
+{ title:"How to Train Your Dragon", rating:8},
+{ title:"Megamind", rating:8},
+{ title:"The Green Mile", rating:9},
+{ title:"The Angry Birds Movie", rating:8},
+{ title:"One Piece (Live Action)", rating:9},
+{ title:"500 Days of Summer", rating:10},
+{ title:"We Are Legion: The Story of the Hacktivists", rating:7},
+{ title:"Attack on Titan: Live Action", rating:9},
+{ title:"Super Book", rating:8}
+];
+
+let highFirst = true;
+
+const itemList = document.getElementById("itemList");
+const countText = document.getElementById("countText");
+
+countText.textContent = items.length + " Titles • Personal Ratings";
+
+function renderList(){
+  itemList.innerHTML = "";
+
+  items.sort((a,b)=>{
+    return highFirst ? b.rating - a.rating : a.rating - b.rating;
+  });
+
+  items.forEach(item=>{
+    const card=document.createElement("a");
+    card.className="card";
+    card.href=`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(item.title)}`;
+    card.target="_blank";
+
+    card.innerHTML=`
+      <div class="title">${item.title}</div>
+      <div class="rating">${item.rating}/10</div>
+    `;
+
+    itemList.appendChild(card);
+  });
+}
+
+function toggleSort(){
+  highFirst = !highFirst;
+  renderList();
+}
+
+renderList();
+</script>
+
+</body>
+</html>
