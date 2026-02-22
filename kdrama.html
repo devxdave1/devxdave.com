@@ -21,7 +21,6 @@ body{
   min-height:100vh;
 }
 
-/* TOP BAR */
 .app-bar{
   padding:40px 25px 25px;
   text-align:center;
@@ -52,21 +51,14 @@ body{
   border-radius:8px;
   cursor:pointer;
   font-size:12px;
-  transition:0.2s;
 }
 
-.sort-btn:hover{
-  background:#1a1a1a;
-}
-
-/* CONTENT */
 .content{
   padding:20px;
   max-width:600px;
   margin:auto;
 }
 
-/* DRAMA CARD */
 .drama-card{
   display:flex;
   justify-content:space-between;
@@ -76,10 +68,9 @@ body{
   border-radius:18px;
   padding:18px 20px;
   margin-bottom:18px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.4);
-  transition:0.3s ease;
   text-decoration:none;
   color:#ffffff;
+  transition:0.3s ease;
 }
 
 .drama-card:hover{
@@ -114,7 +105,6 @@ body{
 
 <div class="app-bar">
   <h1>MY K-DRAMA WATCHED</h1>
-
   <div class="rating-row">
     <span id="countText"></span>
     <div class="sort-btn" onclick="toggleSort()">↑↓</div>
@@ -128,6 +118,7 @@ body{
 
 <script>
 const dramas = [
+
 { title:"Pinocchio", rating:8},
 { title:"Save Me", rating:8},
 { title:"Are You Human?", rating:6},
@@ -186,6 +177,8 @@ const dramas = [
 { title:"Light Shop", rating:8},
 { title:"Squid Game S2", rating:9},
 { title:"Squid Game S3", rating:8},
+{ title:"Bitch X Rich S1", rating:8},
+{ title:"Bitch X Rich S2", rating:7},
 { title:"True Beauty", rating:7},
 { title:"Cheer Up", rating:7},
 { title:"Undercover High School", rating:9},
@@ -213,11 +206,13 @@ const dramas = [
 { title:"The Manipulated", rating:9},
 { title:"Spring Fever", rating:8},
 { title:"Can This Love Be Translated?", rating:8},
-{ title:"Undercover Miss Hong", rating:8}
+{ title:"Undercover Miss Hong", rating:8},
+{ title:"The Art of Sarah", rating:9},
+{ title:"Love Alarm", rating:9},
+{ title:"Love Alarm 2", rating:9)
 ];
 
 let highFirst = true;
-
 const dramaList = document.getElementById("dramaList");
 const countText = document.getElementById("countText");
 
