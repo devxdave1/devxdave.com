@@ -21,7 +21,6 @@ body{
   min-height:100vh;
 }
 
-/* TOP BAR */
 .app-bar{
   padding:40px 25px 25px;
   text-align:center;
@@ -35,20 +34,31 @@ body{
   font-weight:600;
 }
 
-.app-bar p{
+.rating-row{
+  margin-top:8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
   font-size:13px;
   opacity:0.6;
-  margin-top:8px;
 }
 
-/* CONTENT */
+.sort-btn{
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
+  padding:4px 8px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:12px;
+}
+
 .content{
   padding:20px;
   max-width:600px;
   margin:auto;
 }
 
-/* MOVIE CARD */
 .movie-card{
   display:flex;
   justify-content:space-between;
@@ -58,19 +68,14 @@ body{
   border-radius:18px;
   padding:18px 20px;
   margin-bottom:18px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.4);
-  transition:0.3s ease;
   text-decoration:none;
   color:#ffffff;
+  transition:0.3s ease;
 }
 
 .movie-card:hover{
   transform:translateY(-4px);
   background:#1a1a1a;
-}
-
-.movie-card:active{
-  transform:scale(0.98);
 }
 
 .title{
@@ -87,7 +92,6 @@ body{
   font-size:13px;
 }
 
-/* FOOTER */
 .footer{
   text-align:center;
   font-size:12px;
@@ -101,7 +105,10 @@ body{
 
 <div class="app-bar">
   <h1>MY K-MOVIE WATCHED</h1>
-  <p id="countText"></p>
+  <div class="rating-row">
+    <span id="countText"></span>
+    <div class="sort-btn" onclick="toggleSort()">↑↓</div>
+  </div>
 </div>
 
 <div class="content">
@@ -111,67 +118,83 @@ body{
 
 <script>
 const movies = [
-{ title:"The Flu", rating:"8/10"},
-{ title:"Parasite", rating:"10/10"},
-{ title:"1987: When the Day Comes", rating:"8/10"},
-{ title:"Train to Busan", rating:"9/10"},
-{ title:"Shark", rating:"7/10"},
-{ title:"Ditto", rating:"8/10"},
-{ title:"20th Century Girl", rating:"10/10"},
-{ title:"My Little Bride", rating:"7/10"},
-{ title:"Peninsula", rating:"8/10"},
-{ title:"High Five", rating:"7/10"},
-{ title:"The Moon", rating:"8/10"},
-{ title:"Brave Citizen", rating:"9/10"},
-{ title:"Officer Black Belt", rating:"8/10"},
-{ title:"The Gangster, the Cop, and the Devil", rating:"7/10"},
-{ title:"Secretly, Greatly", rating:"6/10"},
-{ title:"Revelations", rating:"8/10"},
-{ title:"Tunnel", rating:"7/10"},
-{ title:"Project Silence", rating:"8/10"},
-{ title:"Pawn", rating:"8/10"},
-{ title:"My Daughter Is a Zombie", rating:"7/10"},
-{ title:"Holy Night: Demon Hunter", rating:"8/10"},
-{ title:"Alive", rating:"9/10"},
-{ title:"Zombie for Sale", rating:"8/10"},
-{ title:"The Great Flood", rating:"8/10"},
-{ title:"Escape", rating:"8/10"},
-{ title:"Sinkhole", rating:"9/10"},
-{ title:"Hijack", rating:"9/10"},
-{ title:"Midnight Sun", rating:"8/10"},
-{ title:"Dragged", rating:"8/10"},
-{ title:"The Secret Zoo", rating:"8/10"},
-{ title:"Target", rating:"8/10"},
-{ title:"Unlocked", rating:"9/10"},
-{ title:"No Other Choice", rating:"9/10"},
-{ title:"Wall to Wall", rating:"7/10"},
-{ title:"Shark 2: The Storm", rating:"8/10"},
-{ title:"My Sassy Girl", rating:"10/10"},
-{ title:"Dokgo Rewind", rating:"8/10"},
-{ title:"Even If This Love Disappears from the World Tonight", rating:"10/10"},
-{ title:"Love Untangled", rating:"9/10"},
-{ title:"Han Gong-ju", rating:"7/10"},
-{ title:"Exit", rating:"8/10"}
+{ title:"The Flu", rating:8},
+{ title:"Parasite", rating:10},
+{ title:"1987: When the Day Comes", rating:8},
+{ title:"Train to Busan", rating:9},
+{ title:"Shark", rating:7},
+{ title:"Ditto", rating:8},
+{ title:"20th Century Girl", rating:10},
+{ title:"My Little Bride", rating:7},
+{ title:"Peninsula", rating:8},
+{ title:"High Five", rating:7},
+{ title:"The Moon", rating:8},
+{ title:"Brave Citizen", rating:9},
+{ title:"Officer Black Belt", rating:8},
+{ title:"The Gangster, the Cop, and the Devil", rating:7},
+{ title:"Secretly, Greatly", rating:6},
+{ title:"Revelations", rating:8},
+{ title:"Tunnel", rating:7},
+{ title:"Project Silence", rating:8},
+{ title:"Pawn", rating:8},
+{ title:"My Daughter Is a Zombie", rating:7},
+{ title:"Holy Night: Demon Hunter", rating:8},
+{ title:"Alive", rating:9},
+{ title:"Zombie for Sale", rating:8},
+{ title:"The Great Flood", rating:8},
+{ title:"Escape", rating:8},
+{ title:"Sinkhole", rating:9},
+{ title:"Hijack", rating:9},
+{ title:"Midnight Sun", rating:8},
+{ title:"Dragged", rating:8},
+{ title:"The Secret Zoo", rating:8},
+{ title:"Target", rating:8},
+{ title:"Unlocked", rating:9},
+{ title:"No Other Choice", rating:9},
+{ title:"Wall to Wall", rating:7},
+{ title:"Shark 2: The Storm", rating:8},
+{ title:"My Sassy Girl", rating:10},
+{ title:"Dokgo Rewind", rating:8},
+{ title:"Even If This Love Disappears from the World Tonight", rating:10},
+{ title:"Love Untangled", rating:9},
+{ title:"Han Gong-ju", rating:7},
+{ title:"Exit", rating:8}
 ];
 
-const movieList=document.getElementById("movieList");
-const countText=document.getElementById("countText");
+let highFirst = true;
+const movieList = document.getElementById("movieList");
+const countText = document.getElementById("countText");
 
-countText.textContent=movies.length+" K-Movies • Personal Ratings";
+countText.textContent = movies.length + " K-Movies • Personal Ratings";
 
-movies.forEach(movie=>{
-  const card=document.createElement("a");
-  card.className="movie-card";
-  card.href=`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(movie.title+" South Korean film")}`;
-  card.target="_blank";
+function renderList(){
+  movieList.innerHTML = "";
 
-  card.innerHTML=`
-    <div class="title">${movie.title}</div>
-    <div class="rating">${movie.rating}</div>
-  `;
+  movies.sort((a,b)=>{
+    return highFirst ? b.rating - a.rating : a.rating - b.rating;
+  });
 
-  movieList.appendChild(card);
-});
+  movies.forEach(movie=>{
+    const card=document.createElement("a");
+    card.className="movie-card";
+    card.href=`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(movie.title+" South Korean film")}`;
+    card.target="_blank";
+
+    card.innerHTML=`
+      <div class="title">${movie.title}</div>
+      <div class="rating">${movie.rating}/10</div>
+    `;
+
+    movieList.appendChild(card);
+  });
+}
+
+function toggleSort(){
+  highFirst = !highFirst;
+  renderList();
+}
+
+renderList();
 </script>
 
 </body>
