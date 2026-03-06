@@ -1074,21 +1074,21 @@ const myBooks = [
   {
     title: "The Myth of Sisyphus",
     author: "Albert Camus",
-    cover: "sisyphus.jpg", // Palitan mo ng tamang filename ng image mo
+    cover: "sisyphus.jpg", 
     rating: 4.9,
     stars: "4.9/5"
   },
   {
     title: "The Stranger",
     author: "Albert Camus",
-    cover: "the_stranger.jpg",
+    cover: "stranger.jpg",
     rating: 4.9,
     stars: "4.9/5"
   },
   {
     title: "White Nights",
     author: "Fyodor Dostoevsky",
-    cover: "white_night.jpg",
+    cover: "white_nights.jpg",
     rating: 4.5,
     stars: "4.5/5"
   },
@@ -1121,30 +1121,50 @@ let touchendX = 0;
 
 function updateBookDisplay(index) {
   const book = myBooks[index];
-  document.getElementById("bookTitle").textContent = book.title;
-  document.getElementById("bookAuthor").textContent = book.author;
-  document.getElementById("bookCover").src = book.cover;
-  
-  let starHtml = "";
-  for(let i=1; i<=5; i++){
-    if(i <= Math.floor(book.rating)) {
-      starHtml += '<i class="fas fa-star"></i> ';
-    } else if(book.rating % 1 !== 0 && i === Math.ceil(book.rating)) {
-      starHtml += '<i class="fas fa-star-half-alt"></i> ';
-    } else {
-      starHtml += '<i class="far fa-star"></i> ';
+  const titleEl = document.getElementById("bookTitle");
+  const authorEl = document.getElementById("bookAuthor");
+  const coverEl = document.getElementById("bookCover");
+  const ratingEl = document.getElementById("bookRating");
+
+  // Smooth transition effect
+  titleEl.style.opacity = 0;
+  authorEl.style.opacity = 0;
+  coverEl.style.opacity = 0;
+
+  setTimeout(() => {
+    titleEl.textContent = book.title;
+    authorEl.textContent = book.author;
+    coverEl.src = book.cover;
+    
+    // Star Rating Logic
+    let starHtml = "";
+    for(let i = 1; i <= 5; i++) {
+      if(i <= Math.floor(book.rating)) {
+        starHtml += '<i class="fas fa-star"></i> ';
+      } else if(book.rating % 1 !== 0 && i === Math.ceil(book.rating)) {
+        starHtml += '<i class="fas fa-star-half-alt"></i> ';
+      } else {
+        starHtml += '<i class="far fa-star"></i> ';
+      }
     }
-  }
-  starHtml += `<span style="color:white; opacity:0.6; font-size:10px; margin-left:4px;">${book.stars}</span>`;
-  document.getElementById("bookRating").innerHTML = starHtml;
+    starHtml += `<span style="color:white; opacity:0.6; font-size:10px; margin-left:4px;">${book.stars}</span>`;
+    ratingEl.innerHTML = starHtml;
+
+    // Fade back in
+    titleEl.style.opacity = 1;
+    authorEl.style.opacity = 0.6;
+    coverEl.style.opacity = 1;
+  }, 150);
 }
 
 function handleGesture() {
   if (touchendX < touchstartX - 50) {
+    // Swipe Left - Next
     currentBookIndex = (currentBookIndex + 1) % myBooks.length;
     updateBookDisplay(currentBookIndex);
   }
   if (touchendX > touchstartX + 50) {
+    // Swipe Right - Previous
     currentBookIndex = (currentBookIndex - 1 + myBooks.length) % myBooks.length;
     updateBookDisplay(currentBookIndex);
   }
@@ -1154,6 +1174,7 @@ const bookCard = document.getElementById('bookCard');
 bookCard.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
 bookCard.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleGesture(); });
 
+// Load first book on start
 document.addEventListener("DOMContentLoaded", () => updateBookDisplay(0));
 </script>
   
