@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard.min.js"></script>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>devxdave</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+  
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000; /* Pure Black */
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+.app-bar{
+  padding:40px 25px 25px;
+  text-align:center;
+  background:#111111;
+  border-bottom:1px solid #1f1f1f;
+}
+
+.profile-circle{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:#0f0f0f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  border:1px solid #1f1f1f;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:2px;
+}
+
+.app-bar h1{
+  font-size:22px;
+  letter-spacing:3px;
+  font-weight:600;
+}
+
+/* CONTENT */
+.content{
+  padding:20px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background: rgba(17,17,17,0.6);
+  border:1px solid #1f1f1f;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+  transition:0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  background:#1a1a1a;
+}
+
+.content h2 {
+  font-size: 11px;
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  opacity: 0.7;
+  font-weight: 600;
+  text-transform: uppercase; /* Para laging capitalized gaya ng sa Books */
+}
+
+.label{
+  font-weight:600;
+}
+
+a{
+  color:#ffffff;
+  text-decoration:none;
+}
+
+a:hover{
+  opacity:0.7;
+}
+
+/* WATCHLIST */
+.watchlist .folder {
+  background: linear-gradient(145deg, #0a0a0a, #141414); /* Aesthetic gradient */
+  border: 1px solid #1f1f1f;
+  padding: 18px;
+  border-radius: 15px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s ease;
+}
+
+.watchlist .folder:hover {
+  background: #1a1a1a;
+  transform: translateX(5px);
+  border-color: #333;
+}
+
+/* MINIMAL DISCORD SPOTIFY */
+
+.spotify-minimal{
+  margin-bottom:25px;
+}
+
+.spotify-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  opacity:0.7;
+  margin-bottom:10px;
+}
+
+.spotify-icon{
+  color:#1db954;
+  font-size:14px;
+}
+
+.spotify-row{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.spotify-album{
+  width:65px;
+  height:65px;
+  border-radius:10px;
+  object-fit:cover;
+}
+
+.spotify-info{
+  flex:1;
+}
+
+.spotify-title{
+  font-size:15px;
+  font-weight:600;
+}
+
+.spotify-artist{
+  font-size:13px;
+  opacity:0.7;
+  margin-bottom:6px;
+}
+
+.spotify-bar{
+  height:4px;
+  background:#2a2a2a;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.spotify-progress{
+  height:100%;
+  width:0%;
+  background:#1db954;
+  transition:width 1s linear;
+}
+
+.spotify-time{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  opacity:0.6;
+  margin-top:4px;
+}
+
+/* SPOTIFY CARD STYLE */
+
+.spotify-card-container{
+  padding:18px;
+}
+
+.spotify-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  opacity:0.7;
+  margin-bottom:12px;
+}
+
+.spotify-icon{
+  color:#1db954;
+  font-size:14px;
+}
+
+.spotify-row{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.spotify-album{
+  width:65px;
+  height:65px;
+  border-radius:10px;
+  object-fit:cover;
+}
+
+.spotify-info{
+  flex:1;
+}
+
+.spotify-title{
+  font-size:15px;
+  font-weight:600;
+}
+
+.spotify-artist{
+  font-size:13px;
+  opacity:0.7;
+  margin-bottom:6px;
+}
+
+.spotify-bar{
+  height:4px;
+  background:#2a2a2a;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.spotify-progress{
+  height:100%;
+  width:0%;
+  background:#1db954;
+  transition:width 1s linear;
+}
+
+.spotify-time{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  opacity:0.6;
+  margin-top:4px;
+  }
+
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  margin-top:18px;
+}
+
+.social-icons a{
+  font-size:26px;
+  color:white;
+  transition:0.2s ease;
+}
+
+.social-icons a:hover{
+  transform:scale(1.2);
+  opacity:0.7;
+}
+
+/* QUOTE DESIGN UPGRADE */
+
+.quote-item{
+  position: relative;
+  padding:20px 20px 20px 25px;
+  border-radius:16px;
+  margin-bottom:16px;
+  background:rgba(25,25,25,0.6);
+  border-left:3px solid #ffffff;
+  overflow:hidden;
+  transition:0.4s ease;
+}
+
+.quote-item::before{
+  content:"“";
+  position:absolute;
+  top:-10px;
+  right:15px;
+  font-size:80px;
+  color:rgba(255,255,255,0.04);
+  font-weight:600;
+}
+
+.quote-item:hover{
+  transform:translateY(-5px);
+  border-left:3px solid #00bfff;
+  background:#181818;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.quote-item p{
+  font-size:14px;
+  line-height:1.6;
+  font-weight:500;
+}
+
+.quote-author{
+  display:block;
+  margin-top:10px;
+  font-size:12px;
+  letter-spacing:1px;
+  opacity:0.6;
+}
+
+.quote-container{
+  max-height:0;
+  overflow:hidden;
+  transition:0.6s ease;
+}
+
+.quote-container.active{
+  max-height:1000px;
+  }
+
+/* SMALL QUOTE BUTTON STYLE */
+
+.quote-wrapper{
+  margin-bottom:18px;
+}
+
+.quote-button{
+  display:inline-block;
+  background:rgba(17,17,17,0.6);
+  border:1px solid #1f1f1f;
+  border-radius:18px;
+  padding:18px 28px;
+  font-size:13px;
+  letter-spacing:1px;
+  opacity:0.8;
+  cursor:pointer;
+  transition:0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.quote-button:hover{
+  background:#1a1a1a;
+  transform:translateY(-4px);
+  opacity:1;
+    }
+  
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:0.6;
+  margin-top:25px;
+}
+
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+
+.quote-item:focus,
+.quote-button:focus{
+  outline: none;
+}
+
+::selection{
+  background: transparent;
+  color: inherit;
+}
+
+.toggle-wrapper{
+  margin-bottom:18px;
+}
+
+.toggle-buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:10px;
+}
+
+.favorite-card{
+  display:none;
+  margin-top:10px;
+}
+
+.favorite-card.active{
+  display:block;
+}
+
+.quote-item{
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.quote-item:active,
+.quote-item:focus{
+  outline: none;
+  background: rgba(25,25,25,0.6);
+}
+
+.quote-item *{
+  -webkit-tap-highlight-color: transparent;
+}
+
+.quote-container{
+  user-select: none;
+}
+
+.favorites-container{
+  max-height:0;
+  overflow:hidden;
+  transition:0.6s ease;
+  margin-bottom:20px;
+}
+
+.favorites-container.active{
+  max-height:1000px;
+}
+
+.watching-img {
+    width: 120px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.watching-title{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.netflix-logo{
+  width: 18px;
+  height: 18px;
+}
+
+.chess-app{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#111;
+  padding:14px;
+  border-radius:16px;
+  border:1px solid #1f1f1f;
+  transition:0.3s ease;
+}
+
+.chess-app:hover{
+  transform:translateY(-4px);
+  background:#1a1a1a;
+  box-shadow:0 8px 20px rgba(0,0,0,0.6);
+}
+
+.chess-icon{
+  width:55px;
+  height:55px;
+  border-radius:14px;
+  object-fit:cover;
+}
+
+.chess-app span{
+  font-size:15px;
+  font-weight:600;
+  }
+
+.app-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 10px 0;
+}
+
+.app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Ginawang flex-start para mapunta sa gilid */
+  transition: 0.2s ease;
+}
+
+.app-icon img {
+  width: 60px; /* Mas malaki nang kaunti base sa screenshot */
+  height: 60px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.app-icon span{
+  margin-top:4px;
+  font-size:10px;
+  letter-spacing:0.5px;
+  opacity:0.75;
+  }
+
+.app-icon:hover img{
+  transform:scale(1.08);
+}
+
+.app-icon img {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: 0.2s ease;
+}
+
+.app-icon span {
+  margin-top: 6px;
+  font-size: 11px;
+  color: white;
+  opacity: 0.85;
+}
+
+.app-icon:hover .app-img{
+  transform:scale(1.08);
+  }
+
+.dev-app img{
+  opacity: 0.12;
+  filter: grayscale(100%);
+}
+
+.dev-app:hover img{
+  opacity: 0.35;
+  transform: scale(1.05);
+}
+
+.chess-card {
+  padding: 14px 16px 2px;
+}
+  
+.chess-card h2 {
+  font-size: 13px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  }
+
+.profile-header {
+  position: relative;
+  padding: 40px 20px 25px;
+  text-align: center;
+  background: #000000; /* Pure Black */
+  border-bottom: 1px solid #1a1a1a; /* Manipis na line para hindi masyadong matingkad */
+}
+
+.profile-img{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  border:3px solid #1f1f1f;
+  object-fit:cover;
+  margin-bottom:12px;
+}
+
+.profile-header h1{
+  font-size:20px;
+  letter-spacing:1px;
+}
+
+.profile-social{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:18px;
+  padding:10px 18px;
+  width:fit-content;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.profile-social a {
+  font-size: 24px;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.profile-social a:hover{
+  transform:scale(1.15);
+  opacity:0.8;
+}
+
+.profile-header{
+  position:relative;
+  padding:40px 20px 25px;
+  text-align:center;
+  background:#111111;
+  border-bottom:1px solid #1f1f1f;
+}
+
+/* MENU ICON */
+
+.menu-icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 26px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.menu-icon:hover{
+  transform:scale(1.2);
+  opacity:1; 
+}
+
+/* Layout para magkatabi ang Books at Chess */
+.hobby-row {
+  display: flex;
+  gap: 15px;
+  align-items: stretch;
+  margin-bottom: 30px;
+}
+
+/* Bookshelf Card Style */
+.book-card {
+  flex: 1; /* Para kuhanin ang natitirang space */
+  background: rgba(17,17,17,0.6);
+  border: 1px solid #1f1f1f;
+  border-radius: 18px;
+  padding: 15px;
+  display: flex;
+  gap: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.book-card:hover {
+  background: #1a1a1a;
+}
+
+.book-img {
+  width: 60px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.book-author {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.book-rating {
+  color: #ffb400; /* Gold color para sa stars */
+  font-size: 12px;
+}
+
+.swap-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 10px;
+  opacity: 0.3;
+  }
+  
+  </style>
+</head>
+
+<body>
+
+<div class="profile-header">
+
+  <img src="AlbertCamus.jpg" class="profile-img">
+  <h1>Dave Christopher</h1>
+
+  <div class="profile-social">
+    <a href="https://www.facebook.com/share/187bLPWYMW/" target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/davechristopher_0" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="mailto:devxdave1@gmail.com">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <a href="javascript:void(0);" onclick="toggleSpotify()">
+      <i class="fab fa-spotify"></i>
+    </a>
+  </div>
+
+</div>
+
+<div class="content">
+
+<!-- SPOTIFY -->
+<div id="spotifyCard" class="card spotify-card-container" style="display:none;">
+
+<div class="spotify-top">
+<i class="fab fa-spotify spotify-icon"></i>
+
+<a href="https://open.spotify.com/user/31khk7tlijgplhspytqink22oliu?si=0zHFDrq_QXamsj6yL2eWPQ"
+   target="_blank"
+   id="spotifyStatus"
+   class="spotify-text">
+   Spotify
+</a>
+
+</div>
+
+<div class="spotify-row">
+
+<img id="cover"
+class="spotify-album"
+style="display:none;"
+/>
+
+<div class="spotify-info">
+<div id="title" class="spotify-title">Not Playing</div>
+<div id="artist" class="spotify-artist"></div>
+
+<div class="spotify-bar">
+<div id="progress" class="spotify-progress"></div>
+</div>
+
+<div class="spotify-time">
+<span id="current">0:00</span>
+<span id="duration">0:00</span>
+</div>
+
+</div>
+</div>
+
+</div>
+  
+<!-- NOW WATCHING -->
+<div id="watchingCard" class="card" style="display:none;">
+
+  <h2 class="watching-title">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg"
+       class="netflix-logo">
+  WATCHING
+  </h2>
+
+  <div style="display:flex; gap:15px; align-items:center;">
+
+    <img id="watchImage"
+     style="width:70px; height:100px; object-fit:cover; border-radius:10px; display:none;" />
+
+    <div style="flex:1;">
+
+      <p><span class="label">Title:</span> 
+        <span id="watchTitle"></span>
+      </p>
+
+      <p><span class="label">Episode:</span> 
+        <span id="watchEpisode"></span>
+      </p>
+
+      <!-- WATCH TIMER -->
+      <div style="margin-top:12px;">
+
+        <div style="height:5px;
+                    background:#2a2a2a;
+                    border-radius:10px;
+                    overflow:hidden;">
+
+          <div id="watchProgress"
+               style="height:100%;
+                      width:0%;
+                      background:#ffffff;">
+          </div>
+
+        </div>
+
+        <div style="display:flex;
+                    justify-content:space-between;
+                    font-size:11px;
+                    opacity:0.6;
+                    margin-top:4px;">
+
+          <span id="watchCurrent">0:00</span>
+          <span id="watchTotal">1:00:00</span>
+          
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- HOBBIES -->
+<div style="margin-bottom: 25px;">
+  <h2 style="font-size: 11px; margin-bottom: 8px; letter-spacing: 1.5px; opacity: 0.7; font-weight: 600; padding-left: 2px;">HOBBIES</h2>
+  
+  <div class="card" style="margin-bottom: 0; padding: 18px 20px;">
+    <p style="font-size: 14px; line-height: 1.5; opacity: 0.9;">
+      Watching K-Dramas | Listening to Music | Playing Chess | Coding | Exploring Philosophy
+    </p>
+  </div>
+</div>
+
+<!-- CHESS -->
+<div class="hobby-row" style="display: flex; gap: 15px; align-items: flex-end; margin-bottom: 30px;">
+  
+  <div style="flex: 1;">
+    <h2 style="font-size: 11px; margin-bottom: 8px; letter-spacing: 1.5px; opacity: 0.7; font-weight: 600;">BOOKS READ IN 2026</h2>
+    
+    <div id="bookCard" class="book-card" style="display: flex; gap: 12px; background: rgba(17,17,17,0.6); border: 1px solid #1f1f1f; border-radius: 18px; padding: 15px; position: relative; cursor: pointer; transition: 0.3s; overflow: hidden; align-items: center; min-height: 115px; touch-action: pan-y;">
+      
+      <img id="bookCover" src="sisyphus.jpg" class="book-img" style="width: 65px; height: 90px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+      
+      <div class="book-info" style="flex: 1; display: flex; flex-direction: column;">
+  <div id="bookCount" style="font-size: 9px; opacity: 0.5; margin-bottom: 2px; letter-spacing: 1px;"></div>
+  <div id="bookTitle" class="book-title" style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Loading...</div>
+  <div id="bookAuthor" class="book-author" style="font-size: 11px; opacity: 0.6; margin-bottom: 8px;">Author</div>
+  <div id="bookRating" class="book-rating" style="color: #ffb400; font-size: 12px;"></div>
+      </div>
+      <div class="swap-hint" style="position: absolute; bottom: 8px; right: 12px; font-size: 10px; opacity: 0.3;"><i class="fas fa-arrows-alt-h"></i> Swipe</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <a href="https://www.chess.com/member/DaveChristopherr" target="_blank" class="app-icon" style="text-decoration: none;">
+      <img src="chess.com.jpg" style="width: 60px; height: 60px; border-radius: 15px; display: block;">
+      <span style="margin-top: 8px; font-size: 11px; opacity: 0.8; text-align: center; display: block; color: white;">Chess.com</span>
+    </a>
+  </div>
+</div>
+  
+<!-- WATCHLIST -->
+<div style="margin-bottom: 30px;">
+  <h2 style="font-size: 11px; margin-bottom: 10px; letter-spacing: 1.5px; opacity: 0.7; font-weight: 600; padding-left: 2px;">WATCHLIST</h2>
+  
+  <div class="watchlist">
+    <a href="kdrama.html">
+      <div class="folder"><span><i class="fas fa-tv" style="margin-right: 12px; opacity: 0.7;"></i> K-Drama</span></div>
+    </a>
+
+    <a href="kmovie.html">
+      <div class="folder"><span><i class="fas fa-film" style="margin-right: 12px; opacity: 0.7;"></i> K-Movie</span></div>
+    </a>
+
+    <a href="movie.html">
+      <div class="folder"><span><i class="fas fa-clapperboard" style="margin-right: 12px; opacity: 0.7;"></i> Movie</span></div>
+    </a>
+  </div>
+</div>
+  
+<div class="footer">©devxdave</div>
+
+</div>
+
+<script>
+const clientId="a3749a83bbd24534b2e709a795fcbae7";
+const redirectUri="https://devxdave1.github.io/devxdave.com/";
+const scopes="user-read-currently-playing user-read-playback-state";
+
+function getToken(){
+  const hash = window.location.hash;
+  if(hash){
+    return new URLSearchParams(hash.substring(1)).get("access_token");
+  }
+  return null; // HUWAG NA MAG REDIRECT
+}
+
+async function updateNowPlaying(token){
+try{
+const res=await fetch(
+"https://api.spotify.com/v1/me/player/currently-playing",
+{headers:{Authorization:"Bearer "+token}}
+);
+
+if(res.status===204||res.status>400){
+document.getElementById("spotifyCard").style.display="none";
+return;
+}
+
+const data=await res.json();
+
+if(!data || !data.is_playing){
+document.getElementById("spotifyCard").style.display="none";
+return;
+}
+
+document.getElementById("spotifyCard").style.display="block";
+document.getElementById("spotifyStatus").textContent="Listening to Spotify";
+
+document.getElementById("title").textContent=data.item.name;
+document.getElementById("artist").textContent=
+data.item.artists.map(a=>a.name).join(", ");
+
+document.getElementById("cover").src =
+data.item.album.images[0].url;
+document.getElementById("cover").style.display = "block";
+
+const percent=(data.progress_ms/data.item.duration_ms)*100;
+document.getElementById("progress").style.width=percent+"%";
+
+function format(ms){
+const totalSeconds=Math.floor(ms/1000);
+const minutes=Math.floor(totalSeconds/60);
+const seconds=totalSeconds%60;
+return minutes+":"+(seconds<10?"0":"")+seconds;
+}
+
+document.getElementById("current").textContent=
+format(data.progress_ms);
+
+document.getElementById("duration").textContent=
+format(data.item.duration_ms);
+
+}catch(err){console.log(err);}
+}
+
+const token = getToken();
+
+if(token){
+  setInterval(()=>updateNowPlaying(token),3000);
+}
+
+if(!token){
+  document.getElementById("spotifyCard").style.display="none";
+    }
+
+</script>
+
+<script>
+function toggleFavorites(){
+  const quote = document.getElementById("quoteList");
+  const fav = document.getElementById("favoritesCard");
+  const journal = document.getElementById("journalCard");
+
+  if(fav.classList.contains("active")){
+    fav.classList.remove("active");
+  } else {
+    fav.classList.add("active");
+    quote.classList.remove("active");
+    journal.classList.remove("active");
+  }
+}
+
+function toggleSpotify(){
+  const card = document.getElementById("spotifyCard");
+  if(card.style.display==="none"){
+    card.style.display="block";
+  }else{
+    card.style.display="none";
+  }
+}
+
+/* ===== NOW WATCHING WITH IMAGE ===== */
+
+function setWatching(title, episode, imageUrl){
+
+  const card = document.getElementById("watchingCard");
+  const titleEl = document.getElementById("watchTitle");
+  const episodeEl = document.getElementById("watchEpisode");
+  const imageEl = document.getElementById("watchImage");
+
+  if(title){
+
+    titleEl.textContent = title;
+    episodeEl.textContent = episode || "";
+
+    if(imageUrl){
+      imageEl.src = imageUrl;
+      imageEl.style.display = "block";
+    } else {
+      imageEl.style.display = "none";
+    }
+
+    card.style.display = "block";
+    
+    startWatchTimer();
+
+  } else {
+    card.style.display = "none";
+  }
+}
+
+/* ===== PERSISTENT 2 HOUR WATCH TIMER ===== */
+
+let watchInterval;
+const totalDuration = 60 * 60; // 1 hour
+function startWatchTimer(){
+
+  const progress = document.getElementById("watchProgress");
+  const currentLabel = document.getElementById("watchCurrent");
+
+  document.getElementById("watchTotal").textContent = "1:00:00";
+
+  clearInterval(watchInterval);
+
+  // Kunin saved time
+  let savedTime = localStorage.getItem("watchTime");
+  let currentTime = savedTime ? parseInt(savedTime) : 0;
+
+  updateUI(currentTime);
+
+  watchInterval = setInterval(()=>{
+
+    currentTime++;
+
+    if(currentTime >= totalDuration){
+      currentTime = totalDuration;
+      clearInterval(watchInterval);
+    }
+
+    localStorage.setItem("watchTime", currentTime);
+    updateUI(currentTime);
+
+  },1000);
+}
+
+
+function updateUI(currentTime){
+
+  const progress = document.getElementById("watchProgress");
+  const currentLabel = document.getElementById("watchCurrent");
+
+  const percent = (currentTime / totalDuration) * 100;
+  progress.style.width = percent + "%";
+
+  const hours = Math.floor(currentTime / 3600);
+  const minutes = Math.floor((currentTime % 3600) / 60);
+  const seconds = currentTime % 60;
+
+  if(hours > 0){
+    currentLabel.textContent =
+      hours + ":" +
+      (minutes < 10 ? "0" : "") + minutes + ":" +
+      (seconds < 10 ? "0" : "") + seconds;
+  } else {
+    currentLabel.textContent =
+      minutes + ":" +
+      (seconds < 10 ? "0" : "") + seconds;
+  }
+}
+
+/* OPTIONAL: Reset kapag nag change ka ng episode */
+function resetWatchTimer(){
+  localStorage.removeItem("watchTime");
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  setWatching("", "", "");
+
+});
+  
+
+</script>
+
+<script>
+const myBooks = [
+  {
+    title: "The Myth of Sisyphus",
+    author: "Albert Camus",
+    cover: "sisyphus.jpg", 
+    rating: 4.9,
+    stars: "4.9/5"
+  },
+  {
+    title: "The Stranger",
+    author: "Albert Camus",
+    cover: "the_stranger.jpg",
+    rating: 4.9,
+    stars: "4.9/5"
+  },
+  {
+    title: "White Nights",
+    author: "Fyodor Dostoevsky",
+    cover: "white_night.jpg",
+    rating: 4.5,
+    stars: "4.5/5"
+  },
+  {
+    title: "The Metamorphosis",
+    author: "Franz Kafka",
+    cover: "metamorphosis.jpg",
+    rating: 4.5,
+    stars: "4.5/5"
+  },
+  {
+    title: "The Gay Science",
+    author: "Friedrich Nietzsche",
+    cover: "gay_science.jpg",
+    rating: 4.7,
+    stars: "4.7/5"
+  },
+  {
+    title: "Bobby Fischer Teaches Chess",
+    author: "Bobby Fischer",
+    cover: "bobby_fischer.jpg",
+    rating: 4.8,
+    stars: "4.8/5"
+  }
+];
+
+let currentBookIndex = 0;
+let touchstartX = 0;
+let touchendX = 0;
+
+function updateBookDisplay(index) {
+  const book = myBooks[index];
+  const titleEl = document.getElementById("bookTitle");
+  const authorEl = document.getElementById("bookAuthor");
+  const coverEl = document.getElementById("bookCover");
+  const ratingEl = document.getElementById("bookRating");
+
+  // Smooth transition effect
+  titleEl.style.opacity = 0;
+  authorEl.style.opacity = 0;
+  coverEl.style.opacity = 0;
+
+  setTimeout(() => {
+    titleEl.textContent = book.title;
+    authorEl.textContent = book.author;
+    coverEl.src = book.cover;
+    
+    // Star Rating Logic
+    let starHtml = "";
+    for(let i = 1; i <= 5; i++) {
+      if(i <= Math.floor(book.rating)) {
+        starHtml += '<i class="fas fa-star"></i> ';
+      } else if(book.rating % 1 !== 0 && i === Math.ceil(book.rating)) {
+        starHtml += '<i class="fas fa-star-half-alt"></i> ';
+      } else {
+        starHtml += '<i class="far fa-star"></i> ';
+      }
+    }
+    starHtml += `<span style="color:white; opacity:0.6; font-size:10px; margin-left:4px;">${book.stars}</span>`;
+    ratingEl.innerHTML = starHtml;
+
+    // Fade back in
+    titleEl.style.opacity = 1;
+    authorEl.style.opacity = 0.6;
+    coverEl.style.opacity = 1;
+  }, 150);
+}
+
+function handleGesture() {
+  if (touchendX < touchstartX - 50) {
+    // Swipe Left - Next
+    currentBookIndex = (currentBookIndex + 1) % myBooks.length;
+    updateBookDisplay(currentBookIndex);
+  }
+  if (touchendX > touchstartX + 50) {
+    // Swipe Right - Previous
+    currentBookIndex = (currentBookIndex - 1 + myBooks.length) % myBooks.length;
+    updateBookDisplay(currentBookIndex);
+  }
+}
+
+const bookCard = document.getElementById('bookCard');
+bookCard.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+bookCard.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleGesture(); });
+
+// Load first book on start
+document.addEventListener("DOMContentLoaded", () => updateBookDisplay(0));
+</script>
+  
+</body>
+  </html>
+  
