@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Archive of Wisdom | Philosophy</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:italic,wght@400;600&family=Quicksand:wght@300;500;700&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+  background: #000000;
+  color: #e0e0e0;
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* WHITE ACCENT */
+:root {
+  --accent: #ffffff; /* Pinalitan ang Blue ng White */
+  --accent-soft: rgba(255, 255, 255, 0.1);
+}
+
+/* MENU ICON */
+.menu-icon {
+  position: fixed;
+  top: 30px;
+  right: 25px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1100;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.menu-icon:hover {
+  color: var(--accent);
+}
+
+/* SIDE MENU */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background: #0a0a0a;
+  border-left: 1px solid #1f1f1f;
+  z-index: 1200;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 60px 25px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  transition: 0.3s;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.menu-item:hover, .menu-item.active {
+  background: var(--accent-soft);
+  color: #fff;
+}
+
+#menuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1150;
+  backdrop-filter: blur(4px);
+}
+
+/* HERO SECTION */
+.hero {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), #000), url('https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1973&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.hero h1 { 
+  font-family: 'Crimson Text', serif; 
+  font-size: clamp(36px, 10vw, 60px); 
+  font-weight: 400; 
+  letter-spacing: 8px; 
+  color: #fff; 
+}
+
+.hero p { 
+  font-size: 11px; 
+  text-transform: uppercase; 
+  letter-spacing: 5px; 
+  opacity: 0.8; 
+  color: var(--accent); 
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 50px 20px 100px; }
+
+/* SECTIONS */
+.section-title {
+  font-family: 'Crimson Text', serif;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff;
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 20px;
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 80px;
+}
+
+.q-card {
+  background: #0d0d0d;
+  padding: 35px;
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.q-card:hover { border-color: var(--accent); transform: translateY(-8px); }
+.q-card h3 { color: var(--accent); margin-bottom: 15px; font-size: 21px; font-family: 'Crimson Text', serif; }
+.q-card p { font-size: 15px; color: #aaa; line-height: 1.8; }
+
+/* TABLE */
+.table-container { overflow-x: auto; margin-bottom: 80px; border-radius: 20px; border: 1px solid #1f1f1f; }
+table { width: 100%; border-collapse: collapse; background: #0a0a0a; font-size: 14px; }
+th, td { padding: 18px; text-align: left; border-bottom: 1px solid #1f1f1f; }
+th { background: #111; color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 11px; }
+tr:hover { background: var(--accent-soft); }
+.philo-name { font-weight: 700; color: #fff; }
+.philo-school { color: var(--accent); font-size: 11px; font-weight: 600; text-transform: uppercase; }
+
+/* QUOTES BOARD */
+.quotes-masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.quote-box {
+  background: #0d0d0d;
+  padding: 25px;
+  border-radius: 15px;
+  border-left: 4px solid var(--accent);
+}
+
+.quote-box p { font-style: italic; font-size: 15px; margin-bottom: 10px; color: #eee; }
+.quote-box span { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; }
+
+/* TINANGGAL ANG FOOTER SECTION */
+
+</style>
+</head>
+<body>
+
+<div class="menu-icon" onclick="toggleSideMenu()">
+  <i class="fas fa-bars"></i>
+</div>
+
+<div id="menuOverlay" onclick="toggleSideMenu()"></div>
+
+<div id="sideMenu">
+  <div onclick="toggleSideMenu()" style="position:absolute; top:20px; right:20px; font-size:22px; cursor:pointer; opacity:0.5;">
+    <i class="fas fa-times"></i>
+  </div>
+  <nav style="margin-top:20px;">
+    <a href="index.html" class="menu-item"><i class="fas fa-home"></i> Home</a>
+    <a href="aboutme.html" class="menu-item"><i class="fas fa-user"></i> About me</a>
+    <a href="gender.html" class="menu-item"><i class="fas fa-venus-mars"></i> Gender</a>
+    <a href="favorites.html" class="menu-item"><i class="fas fa-heart"></i> Favorites</a>
+    <a href="philosophy.html" class="menu-item active"><i class="fas fa-brain"></i> Philosophy</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <p>The Wisdom of the Ages</p>
+  <h1>PHILOSOPHY</h1>
+</div>
+
+<div class="container">
+  
+  <div class="section-title">Fundamental Inquiries</div>
+  
+  <div class="question-grid">
+    <div class="q-card">
+      <h3>What is the meaning of life?</h3>
+      <p>Existentialists like <b>Jean-Paul Sartre</b> argue that "existence precedes essence." We are born without a pre-defined purpose, and it is our absolute responsibility to create our own meaning through our actions and choices.</p>
+    </div>
+    <div class="q-card">
+      <h3>Does God exist?</h3>
+      <p>A central question in Metaphysics. <b>Blaise Pascal</b> suggested it is logically safer to believe (Pascal's Wager), while <b>Friedrich Nietzsche</b> proclaimed that the concept of a singular divine authority has collapsed in the modern age.</p>
+    </div>
+    <div class="q-card">
+      <h3>What is Truth?</h3>
+      <p>Philosophers debate whether truth is objective (independent of us) or subjective (dependent on perspective). <b>Rationalists</b> look for truth in logic, while <b>Empiricists</b> believe truth can only be found through sensory experience.</p>
+    </div>
+  </div>
+
+  <div class="section-title">The 20 Great Minds</div>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Philosopher</th>
+          <th>School of Thought</th>
+          <th>Core Philosophy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="philo-name">Socrates</td><td class="philo-school">Classical Greek</td><td>The Socratic Method; "The unexamined life is not worth living."</td></tr>
+        <tr><td class="philo-name">Plato</td><td class="philo-school">Platonism</td><td>Idealism; Reality is just a shadow of the perfect Forms.</td></tr>
+        <tr><td class="philo-name">Aristotle</td><td class="philo-school">Aristotelianism</td><td>The Golden Mean; Knowledge begins with sensory experience.</td></tr>
+        <tr><td class="philo-name">Marcus Aurelius</td><td class="philo-school">Stoicism</td><td>Inner peace through the control of one's own mind.</td></tr>
+        <tr><td class="philo-name">Albert Camus</td><td class="philo-school">Absurdism</td><td>Embracing life despite the inherent lack of cosmic meaning.</td></tr>
+        <tr><td class="philo-name">Friedrich Nietzsche</td><td class="philo-school">Existentialism</td><td>The Übermensch; Self-overcoming and the Will to Power.</td></tr>
+        <tr><td class="philo-name">Immanuel Kant</td><td class="philo-school">Kantianism</td><td>The Categorical Imperative; Morality based on universal duty.</td></tr>
+        <tr><td class="philo-name">Jean-Paul Sartre</td><td class="philo-school">Existentialism</td><td>Man is condemned to be free and defines his own essence.</td></tr>
+        <tr><td class="philo-name">Arthur Schopenhauer</td><td class="philo-school">Pessimism</td><td>The world is driven by an insatiable and blind Will.</td></tr>
+        <tr><td class="philo-name">Baruch Spinoza</td><td class="philo-school">Pantheism</td><td>God and Nature are one and the same substance.</td></tr>
+        <tr><td class="philo-name">René Descartes</td><td class="philo-school">Rationalism</td><td>"I think, therefore I am"; Foundational doubt.</td></tr>
+        <tr><td class="philo-name">John Locke</td><td class="philo-school">Empiricism</td><td>The Tabula Rasa; Knowledge comes from experience.</td></tr>
+        <tr><td class="philo-name">David Hume</td><td class="philo-school">Skepticism</td><td>The problem of induction and the limits of reason.</td></tr>
+        <tr><td class="philo-name">Karl Marx</td><td class="philo-school">Marxism</td><td>Historical Materialism and class struggle.</td></tr>
+        <tr><td class="philo-name">Thomas Aquinas</td><td class="philo-school">Scholasticism</td><td>Reconciling Christian faith with Aristotelian logic.</td></tr>
+        <tr><td class="philo-name">Søren Kierkegaard</td><td class="philo-school">Existentialism</td><td>The Leap of Faith and the anxiety of choice.</td></tr>
+        <tr><td class="philo-name">Confucius</td><td class="philo-school">Confucianism</td><td>Social harmony through ethics and filial piety.</td></tr>
+        <tr><td class="philo-name">Lao Tzu</td><td class="philo-school">Taoism</td><td>Wu Wei; Living in harmony with the natural "Way".</td></tr>
+        <tr><td class="philo-name">Simone de Beauvoir</td><td class="philo-school">Feminism</td><td>"One is not born, but rather becomes, a woman."</td></tr>
+        <tr><td class="philo-name">Michel Foucault</td><td class="philo-school">Post-Structuralism</td><td>The intersection of knowledge, power, and social control.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Voices of Wisdom</div>
+  
+  <div class="quotes-masonry">
+    <div class="quote-box"><p>"I think, therefore I am."</p><span>— René Descartes</span></div>
+    <div class="quote-box"><p>"He who has a why to live can bear almost any how."</p><span>— Friedrich Nietzsche</span></div>
+    <div class="quote-box"><p>"Man is condemned to be free."</p><span>— Jean-Paul Sartre</span></div>
+    <div class="quote-box"><p>"Happiness depends upon ourselves."</p><span>— Aristotle</span></div>
+    <div class="quote-box"><p>"The only thing I know is that I know nothing."</p><span>— Socrates</span></div>
+    <div class="quote-box"><p>"Waste no more time arguing what a good man should be. Be one."</p><span>— Marcus Aurelius</span></div>
+    <div class="quote-box"><p>"Life is a constant oscillation between pain and boredom."</p><span>— Arthur Schopenhauer</span></div>
+    <div class="quote-box"><p>"In the midst of winter, I found there was, within me, an invincible summer."</p><span>— Albert Camus</span></div>
+  </div>
+
+</div>
+
+<script>
+function toggleSideMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+  if (menu.style.right === "0px") {
+    menu.style.right = "-260px";
+    overlay.style.display = "none";
+  } else {
+    menu.style.right = "0px";
+    overlay.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
