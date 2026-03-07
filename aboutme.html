@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Dave Pham</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* MENU ICON */
+.menu-icon {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 101;
+  color: white;
+}
+
+/* SIDE MENU */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background: #0a0a0a;
+  border-left: 1px solid #1f1f1f;
+  z-index: 110;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 60px 25px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  transition: 0.3s;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.menu-item:hover, .menu-item.active {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+#menuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 105;
+  backdrop-filter: blur(4px);
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 80px;
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 { font-size: 28px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
+.subtitle { font-size: 13px; opacity: 0.5; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
+
+/* TAGS SECTION - Restored Original Tags */
+.tags-row { 
+  display: flex; 
+  gap: 10px; 
+  margin-bottom: 20px; 
+}
+
+.tag { 
+  flex: 1; 
+  background: #0a0a0a; 
+  border: 1px solid #1f1f1f; 
+  padding: 15px 5px; 
+  border-radius: 18px; 
+  text-align: center; 
+}
+
+.tag i { 
+  display: block; 
+  font-size: 20px; 
+  margin-bottom: 8px; 
+  color: #ffffff; 
+}
+
+.tag span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.label-small { font-size: 9px; opacity: 0.5; display: block; margin-bottom: 4px; letter-spacing: 1px; }
+
+/* ASEXUAL FLAG ICON */
+.ace-flag {
+  width: 22px;
+  height: 14px;
+  margin: 0 auto 8px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to bottom,
+    #000000 25%,
+    #A3A3A3 25% 50%,
+    #FFFFFF 50% 75%,
+    #800080 75%
+  );
+  border: 0.5px solid rgba(255,255,255,0.2);
+}
+
+/* CARD STYLE */
+.card {
+  background: rgba(17,17,17,0.6);
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; opacity: 0.5; text-transform: uppercase; margin-bottom: 12px; display: block; }
+p { font-size: 15px; line-height: 1.7; opacity: 0.85; margin-bottom: 15px; }
+
+/* READ MORE BUTTON */
+.btn-toggle {
+  background: #fff; color: #000; border: none; padding: 12px 28px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 5px; transition: 0.3s;
+}
+.btn-toggle:hover { background: #555; color: white; }
+
+.hidden-bio { display: none; }
+
+</style>
+</head>
+
+<body>
+
+<div class="menu-icon" onclick="toggleSideMenu()">
+  <i class="fas fa-bars"></i>
+</div>
+
+<div id="menuOverlay" onclick="toggleSideMenu()"></div>
+
+<div id="sideMenu">
+  <div onclick="toggleSideMenu()" style="position:absolute; top:20px; right:20px; font-size:22px; cursor:pointer; opacity:0.5;">
+    <i class="fas fa-times"></i>
+  </div>
+  <nav style="margin-top:20px;">
+    <a href="index.html" class="menu-item"><i class="fas fa-home"></i> Home</a>
+    <a href="aboutme.html" class="menu-item active"><i class="fas fa-user"></i> About me</a>
+    <a href="gender.html" class="menu-item"><i class="fas fa-venus-mars"></i> Gender</a>
+    <a href="favorites.html" class="menu-item"><i class="fas fa-heart"></i> Favorites</a>
+    <a href="philosophy.html" class="menu-item"><i class="fas fa-brain"></i> Philosophy</a>
+  </nav>
+</div>
+
+<div class="content">
+  <div class="header-section">
+    <h1>DAVE CHRISTOPHER</h1>
+    <div class="subtitle">Aspiring Developer • Philosophy Enthusiast</div>
+  </div>
+
+  <div class="tags-row">
+    <div class="tag">
+      <i class="fas fa-brain"></i>
+      <span class="label-small">MBTI</span>
+      <span>INTJ</span>
+    </div>
+    <div class="tag">
+      <i class="fas fa-moon"></i>
+      <span class="label-small">ZODIAC</span>
+      <span>CANCER</span>
+    </div>
+    <div class="tag">
+      <div class="ace-flag"></div>
+      <span class="label-small">GENDER</span>
+      <span>ASEXUAL</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="section-label">About me</span>
+    <p>I am <b>Dave Christopher</b>, also known online as <b>Dave Pham</b>. I am an aspiring developer with a deep interest in philosophy. I am especially inspired by Albert Camus and his exploration of human perseverance in <i>The Myth of Sisyphus</i>.</p>
+    
+    <div id="bioMore" class="hidden-bio">
+      <p>I used the name Dave Pham before because I was a fan of Hanni, and through that community, I met many friends online. From 2024 to 2025, I spent most of my time at home. I was often alone and didn’t have people to socialize with in person, but I still found happiness through the friends I met online. In fact, I never really had close friends in real life because I struggled with social anxiety.</p>
+
+      <p>In the past, I also had difficulty controlling my anger. But over time, I’ve been trying to change and improve myself. It hasn’t been easy. Even now, I sometimes find it hard to talk to people. However, around 2025 to 2026, I slowly started communicating with others again and began going outside more.</p>
+
+      <p>Sometimes I feel like it’s easier to stay at home rather than interact with society because there are moments when I feel like I don’t belong in this world. At school, I’m sometimes bullied because I always wear a mask. Honestly, I’m not even sure why I keep wearing it—maybe because I lack confidence in myself. I often feel like I don’t trust people, and sometimes I don’t even trust myself.</p>
+
+      <p>My family has also misunderstood me many times. They sometimes see me as someone unstable because of my past struggles with anger. There were moments in the past when my anger led to serious conflicts with my relatives, and I deeply regret those times. Because of those incidents, some family members began to distance themselves from me.</p>
+
+      <p>There are times when I feel ashamed of my past and feel like I haven’t done anything right in my life. I’ve heard painful words from people close to me, and sometimes I even question my own worth. There were moments when I wondered if it would be easier to disappear from this world.</p>
+
+      <p>These experiences also led me to question my faith. When I was younger, I was very religious. I went to church every Sunday and loved watching shows about Jesus like Superbook. But as life became more difficult, I began asking myself: Is God real? Why did my life turn out this way?</p>
+
+      <p>Because of these questions, I became an atheist around 2022, and until now I still carry many unanswered questions about whether God truly exists.</p>
+
+      <p>Despite everything, I am still here, still thinking, still searching for meaning, and still trying to improve myself.</p>
+
+      <p>Nowadays, I have no one to connect with. I focus on philosophy, chess, and programming. I just let others who dislike me, bully me, or avoid me be. Gradually, I am starting to talk to people a little. Now, I study, do philosophy, and programming. That’s it. I did this because I feel exhausted from everything.</p>
+    </div>
+    
+    <button class="btn-toggle" id="toggleBtn" onclick="toggleBio()">Read More</button>
+  </div>
+</div>
+
+<script>
+function toggleSideMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+  if (menu.style.right === "0px") {
+    menu.style.right = "-260px";
+    overlay.style.display = "none";
+  } else {
+    menu.style.right = "0px";
+    overlay.style.display = "block";
+  }
+}
+
+function toggleBio() {
+  const bio = document.getElementById("bioMore");
+  const btn = document.getElementById("toggleBtn");
+  if (bio.style.display === "none" || bio.style.display === "") {
+    bio.style.display = "block";
+    btn.innerHTML = "Show Less";
+  } else {
+    bio.style.display = "none";
+    btn.innerHTML = "Read More";
+  }
+}
+</script>
+
+</body>
+</html>
