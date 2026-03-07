@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Album - Nicole by NIKI</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  z-index: 10;
+}
+
+/* MAIN CONTENT */
+.content {
+  width: 100%;
+  max-width: 750px;
+  margin-top: 80px;
+  padding: 20px 20px 80px;
+}
+
+.wiki-header {
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h1 { font-size: 32px; font-weight: 600; letter-spacing: 1px; }
+
+/* INFOBOX */
+.infobox {
+  background: rgba(17,17,17,0.8);
+  border: 1px solid #1f1f1f;
+  width: 100%;
+  max-width: 280px;
+  float: right;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .infobox { float: none; margin: 0 auto 30px; width: 100%; }
+}
+
+.infobox img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infobox th {
+  text-align: left;
+  padding: 8px 0;
+  width: 40%;
+  opacity: 0.4;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+.infobox td {
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+/* SECTIONS */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 5px;
+  margin: 35px 0 15px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+
+.tracklist {
+  background: rgba(255,255,255,0.03);
+  padding: 20px;
+  border-radius: 12px;
+  list-style: none;
+}
+
+.tracklist li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer { text-align: center; font-size: 11px; opacity: 0.3; margin-top: 60px; letter-spacing: 2px; clear: both; }
+
+</style>
+</head>
+
+<body>
+
+<a href="favorites.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+
+<div class="content">
+  <div class="wiki-header">
+    <h1>Nicole (Album)</h1>
+  </div>
+
+  <aside class="infobox">
+    <img src="nicole-album.jpg" alt="Nicole Album Cover">
+    <table>
+      <tr><th>Artist</th><td>NIKI</td></tr>
+      <tr><th>Released</th><td>August 12, 2022</td></tr>
+      <tr><th>Genre</th><td>Indie Pop, Folk-Pop</td></tr>
+      <tr><th>Length</th><td>45:49</td></tr>
+      <tr><th>Label</th><td>88rising</td></tr>
+      <tr><th>Producers</th><td>NIKI, Jacob Ray, Ethan Gruska</td></tr>
+    </table>
+  </aside>
+
+  <p>
+    <b><i>Nicole</i></b> is the second studio album by Indonesian singer-songwriter <b>NIKI</b>. Released on August 12, 2022, the album marks a significant return to her indie-folk roots. It consists primarily of re-recorded songs from her "archive" that she originally wrote and posted on YouTube as a teenager under her real name, Nicole Zefanya.
+  </p>
+
+  <div class="section-title">Background & Theme</div>
+  <p>
+    The album is often described as a "coming-of-age" record. After experimenting with R&B and conceptual pop in her previous works, NIKI decided to strip back the production to tell the story of her first love and high school heartbreaks. The album is a raw, emotional time capsule that explores themes of nostalgia, regret, and the bittersweet process of growing up.
+  </p>
+
+  <div class="section-title">Key Tracks</div>
+  <ul class="tracklist">
+    <li><span>1. Before</span><span>3:54</span></li>
+    <li><span>2. High School in Jakarta</span><span>3:39</span></li>
+    <li><span>3. Backburner</span><span>3:52</span></li>
+    <li><span>4. Oceans & Engines</span><span>5:36</span></li>
+    <li><span>5. Facebook Friends</span><span>3:57</span></li>
+  </ul>
+
+  <div class="section-title">Personal Connection</div>
+  <p>
+    I resonate with this album because of its <b>unapologetic honesty</b>. Songs like <i>"Backburner"</i> and <i>"Oceans & Engines"</i> capture the exact feeling of trying to let go of someone while still feeling tethered to the past. It's a masterpiece for anyone who finds comfort in nostalgia and the beauty of acoustic storytelling.
+  </p>
+
+</body>
+</html>
