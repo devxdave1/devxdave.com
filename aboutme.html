@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Dave Christopher</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000; /* Pure Black */
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 60px; /* Mas malaking margin dahil walang profile pic */
+}
+
+/* HEADER SECTION */
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 13px;
+  opacity: 0.5;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* CARDS */
+.card {
+  background: rgba(17,17,17,0.6);
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  background: #151515;
+  border-color: #333;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  opacity: 0.5;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* PERSONAL TAGS */
+.tags-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  flex: 1;
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  padding: 18px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.tag i {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #00bfff; 
+}
+
+.tag span {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* READ MORE BUTTON */
+.btn-toggle {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.btn-toggle:hover {
+  background: #00bfff;
+  color: #fff;
+}
+
+.hidden-bio {
+  display: none;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.3;
+  margin-top: 50px;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="content">
+  <div class="header-section">
+    <h1>DAVE CHRISTOPHER</h1>
+    <div class="subtitle">Programmer • Philosopher</div>
+  </div>
+
+  <div class="tags-row">
+    <div class="tag">
+      <i class="fas fa-brain"></i>
+      <span class="label">MBTI</span>
+      <span>INTJ</span>
+    </div>
+    <div class="tag">
+      <i class="fas fa-moon"></i>
+      <span class="label">ZODIAC</span>
+      <span>CANCER</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="label">Background</span>
+    <p>
+      I am <b>Dave Christopher</b>. My goal is to become a skilled programmer or a philosopher. 
+      I am deeply influenced by the works of Albert Camus, particularly his exploration of the human condition in <i>The Myth of Sisyphus</i>.
+    </p>
+    
+    <p style="margin-top: 12px;">
+      As an <b>Atheist</b>, I value critical thinking and the constant questioning of established ideas to better understand existence and objective truth.
+    </p>
+
+    <div id="bioMore" class="hidden-bio">
+      <p>
+        I experience <b>social anxiety</b>, which leads me to prefer solitude and quiet environments. 
+        For me, being alone is a productive state where I can focus on my thoughts, studies, and personal growth without distractions.
+      </p>
+    </div>
+
+    <button class="btn-toggle" id="toggleBtn" onclick="toggleBio()">Read More</button>
+  </div>
+
+  <div class="card">
+    <span class="label">Focus Areas</span>
+    <p>Chess Strategy • Logical Reasoning • Software Development • Existentialism</p>
+  </div>
+
+  <div class="footer">DEVELOPED BY DEVXDAVE • 2026</div>
+</div>
+
+<script>
+function toggleBio() {
+  const bio = document.getElementById("bioMore");
+  const btn = document.getElementById("toggleBtn");
+
+  if (bio.style.display === "none" || bio.style.display === "") {
+    bio.style.display = "block";
+    btn.innerHTML = "Show Less";
+  } else {
+    bio.style.display = "none";
+    btn.innerHTML = "Read More";
+  }
+}
+</script>
+
+</body>
+</html>
