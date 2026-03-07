@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kim You-jung - My First Celebrity Crush</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  z-index: 10;
+}
+
+.back-btn:hover { color: #fff; }
+
+/* MAIN CONTENT */
+.content {
+  width: 100%;
+  max-width: 750px;
+  margin-top: 80px;
+  padding: 20px 20px 80px;
+}
+
+.wiki-header {
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h1 { font-size: 32px; font-weight: 600; letter-spacing: 1px; }
+
+/* CRUSH HIGHLIGHT */
+.crush-highlight {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #1f1f1f;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  text-align: center;
+  border-left: 4px solid #fff;
+}
+
+.crush-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.crush-text {
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* INFOBOX */
+.infobox {
+  background: rgba(17,17,17,0.8);
+  border: 1px solid #1f1f1f;
+  width: 100%;
+  max-width: 280px;
+  float: right;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .infobox { float: none; margin: 0 auto 30px; width: 100%; }
+}
+
+.infobox img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  filter: grayscale(20%);
+}
+
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infobox th {
+  text-align: left;
+  padding: 8px 0;
+  width: 40%;
+  opacity: 0.4;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+.infobox td {
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+/* SECTIONS */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 5px;
+  margin: 35px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+
+b { color: #fff; }
+
+.footer { text-align: center; font-size: 11px; opacity: 0.3; margin-top: 60px; letter-spacing: 2px; clear: both; }
+
+</style>
+</head>
+
+<body>
+
+<a href="favorites.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+
+<div class="content">
+  <div class="wiki-header">
+    <h1>Kim Yoo-jung</h1>
+  </div>
+
+  <div class="crush-highlight">
+    <span class="crush-label">Personal Status</span>
+    <span class="crush-text">My very first celebrity crush since 2022-2023.</span>
+  </div>
+
+  <aside class="infobox">
+    <img src="kyj.jpg" alt="Kim Yoo-jung">
+    <table>
+      <tr><th>Born</th><td>September 22, 1999</td></tr>
+      <tr><th>Birthplace</th><td>Seoul, South Korea</td></tr>
+      <tr><th>Occupation</th><td>Actress, Model</td></tr>
+      <tr><th>Years active</th><td>2003–present</td></tr>
+      <tr><th>Key Work</th><td>20th Century Girl (2022)</td></tr>
+    </table>
+  </aside>
+
+  <p>
+    <b>Kim Yoo-jung</b> is a highly acclaimed South Korean actress who holds a significant place in my personal life as my <b>first celebrity crush</b>. My admiration for her began between <b>2022 and 2023</b>, a period where her career reached new heights through international streaming platforms.
+  </p>
+
+  <div class="section-title">Career and Impact</div>
+  <p>
+    Known as "Korea's Little Sister" during her years as a child actress, she successfully transitioned into a powerhouse leading lady. Her performance in the Netflix film <i>20th Century Girl</i> was the turning point that made me a dedicated fan. Her ability to portray the bittersweet essence of first love resonated deeply with me.
+  </p>
+
+  <div class="section-title">Personal Connection</div>
+  <p>
+    What makes her stand out is her expressive acting. She has a unique way of conveying pain and longing without saying a word. In the movies I’ve watched, specifically her role as Na Bo-ra, she perfectly captured the nostalgia of the 90s, making her not just a "crush," but an artist I truly respect.
+  </p>
+
+  <div class="footer">DEVELOPED BY DEVXDAVE • 2026</div>
+</div>
+
+</body>
+</html>
