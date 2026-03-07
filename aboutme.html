@@ -18,41 +18,86 @@
 }
 
 body {
-  background: #000000; /* Pure Black */
+  background: #000000;
   color: #ffffff;
   min-height: 100vh;
-  padding: 20px;
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow-x: hidden;
 }
 
+/* MENU ICON (Parehas sa Home) */
+.menu-icon {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 101;
+  color: white;
+}
+
+/* SIDE MENU STYLING */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background: #0a0a0a;
+  border-left: 1px solid #1f1f1f;
+  z-index: 110;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 60px 25px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  transition: 0.3s;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.menu-item:hover, .menu-item.active {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+#menuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 105;
+  backdrop-filter: blur(4px);
+}
+
+/* CONTENT BOX */
 .content {
   width: 100%;
   max-width: 600px;
-  margin-top: 60px; /* Mas malaking margin dahil walang profile pic */
+  margin-top: 80px;
+  padding: 20px;
 }
 
-/* HEADER SECTION */
 .header-section {
   text-align: center;
   margin-bottom: 40px;
 }
 
-h1 {
-  font-size: 28px;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
+h1 { font-size: 28px; letter-spacing: 2px; font-weight: 600; }
+.subtitle { font-size: 13px; opacity: 0.5; letter-spacing: 3px; text-transform: uppercase; }
 
-.subtitle {
-  font-size: 13px;
-  opacity: 0.5;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-/* CARDS */
 .card {
   background: rgba(17,17,17,0.6);
   border: 1px solid #1f1f1f;
@@ -60,102 +105,51 @@ h1 {
   padding: 25px;
   margin-bottom: 18px;
   backdrop-filter: blur(10px);
-  transition: 0.3s ease;
 }
 
-.card:hover {
-  background: #151515;
-  border-color: #333;
-}
+.label { font-size: 10px; font-weight: 600; letter-spacing: 2px; opacity: 0.5; text-transform: uppercase; margin-bottom: 12px; display: block; }
+p { font-size: 15px; line-height: 1.7; opacity: 0.85; }
 
-.label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  opacity: 0.5;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: block;
-}
+.tags-row { display: flex; gap: 15px; margin-bottom: 20px; }
+.tag { flex: 1; background: #0a0a0a; border: 1px solid #1f1f1f; padding: 18px; border-radius: 18px; text-align: center; }
+.tag i { display: block; font-size: 22px; margin-bottom: 10px; color: #00bfff; }
+.tag span { font-size: 13px; font-weight: 600; }
 
-p {
-  font-size: 15px;
-  line-height: 1.7;
-  opacity: 0.85;
-}
-
-/* PERSONAL TAGS */
-.tags-row {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.tag {
-  flex: 1;
-  background: #0a0a0a;
-  border: 1px solid #1f1f1f;
-  padding: 18px;
-  border-radius: 18px;
-  text-align: center;
-}
-
-.tag i {
-  display: block;
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #00bfff; 
-}
-
-.tag span {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-/* READ MORE BUTTON */
 .btn-toggle {
-  background: #ffffff;
-  color: #000000;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: 0.3s;
+  background: #fff; color: #000; border: none; padding: 12px 28px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 15px;
 }
 
-.btn-toggle:hover {
-  background: #00bfff;
-  color: #fff;
-}
-
-.hidden-bio {
-  display: none;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.footer {
-  text-align: center;
-  font-size: 11px;
-  opacity: 0.3;
-  margin-top: 50px;
-  letter-spacing: 2px;
-}
+.hidden-bio { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer { text-align: center; font-size: 11px; opacity: 0.3; margin-top: 50px; letter-spacing: 2px; }
 </style>
 </head>
 
 <body>
 
+<div class="menu-icon" onclick="toggleSideMenu()">
+  <i class="fas fa-bars"></i>
+</div>
+
+<div id="menuOverlay" onclick="toggleSideMenu()"></div>
+
+<div id="sideMenu">
+  <div onclick="toggleSideMenu()" style="position:absolute; top:20px; right:20px; font-size:22px; cursor:pointer; opacity:0.5;">
+    <i class="fas fa-times"></i>
+  </div>
+  <nav style="margin-top:20px;">
+    <a href="index.html" class="menu-item"><i class="fas fa-home"></i> Home</a>
+    <a href="aboutme.html" class="menu-item active"><i class="fas fa-user"></i> About me</a>
+    <a href="#" class="menu-item"><i class="fas fa-venus-mars"></i> Gender</a>
+    <a href="#" class="menu-item"><i class="fas fa-heart"></i> Favorites</a>
+    <a href="#" class="menu-item"><i class="fas fa-brain"></i> Philosophy</a>
+  </nav>
+</div>
+
 <div class="content">
- <div class="header-section">
+  <div class="header-section">
     <h1>DAVE CHRISTOPHER</h1>
     <div class="subtitle">Aspiring Developer • Philosophy Enthusiast</div>
-</div>
+  </div>
 
   <div class="tags-row">
     <div class="tag">
@@ -171,24 +165,13 @@ p {
   </div>
 
   <div class="card">
-    <span class="label">About me</span>
-    
-<p>
-  I am <b>Dave Christopher</b>. I am currently an aspiring developer with a deep interest in philosophy. 
-  I am inspired by Albert Camus and his exploration of human persistence in <i>The Myth of Sisyphus</i>.
-</p>
-    
-    <p style="margin-top: 12px;">
-      As an <b>Atheist</b>, I value critical thinking and the constant questioning of established ideas to better understand existence and objective truth.
-    </p>
+    <span class="label">Background</span>
+    <p>I am <b>Dave Christopher</b>. I am currently an aspiring developer with a deep interest in philosophy. I am inspired by Albert Camus and his exploration of human persistence in <i>The Myth of Sisyphus</i>.</p>
+    <p style="margin-top: 12px;">As an <b>Atheist</b>, I value critical thinking and the constant questioning of established ideas.</p>
 
     <div id="bioMore" class="hidden-bio">
-      <p>
-        I experience <b>social anxiety</b>, which leads me to prefer solitude and quiet environments. 
-        For me, being alone is a productive state where I can focus on my thoughts, studies, and personal growth without distractions.
-      </p>
+      <p>I experience <b>social anxiety</b>, preferring solitude as a productive state where my mind becomes clear.</p>
     </div>
-
     <button class="btn-toggle" id="toggleBtn" onclick="toggleBio()">Read More</button>
   </div>
 
@@ -201,10 +184,21 @@ p {
 </div>
 
 <script>
+function toggleSideMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+  if (menu.style.right === "0px") {
+    menu.style.right = "-260px";
+    overlay.style.display = "none";
+  } else {
+    menu.style.right = "0px";
+    overlay.style.display = "block";
+  }
+}
+
 function toggleBio() {
   const bio = document.getElementById("bioMore");
   const btn = document.getElementById("toggleBtn");
-
   if (bio.style.display === "none" || bio.style.display === "") {
     bio.style.display = "block";
     btn.innerHTML = "Show Less";
@@ -216,4 +210,4 @@ function toggleBio() {
 </script>
 
 </body>
-</html>
+  </html>
