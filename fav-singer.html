@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clairo - Profile</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  z-index: 10;
+}
+
+/* MAIN CONTENT */
+.content {
+  width: 100%;
+  max-width: 750px;
+  margin-top: 80px;
+  padding: 20px 20px 80px;
+}
+
+.wiki-header {
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h1 { font-size: 32px; font-weight: 600; letter-spacing: 1px; }
+
+/* INFOBOX */
+.infobox {
+  background: rgba(17,17,17,0.8);
+  border: 1px solid #1f1f1f;
+  width: 100%;
+  max-width: 280px;
+  float: right;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .infobox { float: none; margin: 0 auto 30px; width: 100%; }
+}
+
+.infobox img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infobox th {
+  text-align: left;
+  padding: 8px 0;
+  width: 40%;
+  opacity: 0.4;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+.infobox td {
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+/* SECTIONS */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 5px;
+  margin: 35px 0 15px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+
+b { color: #fff; }
+
+.footer { text-align: center; font-size: 11px; opacity: 0.3; margin-top: 60px; letter-spacing: 2px; clear: both; }
+
+</style>
+</head>
+
+<body>
+
+<a href="favorites.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+
+<div class="content">
+  <div class="wiki-header">
+    <h1>Clairo</h1>
+  </div>
+
+  <aside class="infobox">
+    <img src="clairo.jpg" alt="Clairo performing">
+    <table>
+      <tr><th>Birth name</th><td>Claire Elizabeth Cottrill</td></tr>
+      <tr><th>Born</th><td>August 18, 1998 (Age 27)</td></tr>
+      <tr><th>Origin</th><td>Carlisle, Massachusetts, U.S.</td></tr>
+      <tr><th>Genres</th><td>Indie pop, Bedroom pop, Soft rock</td></tr>
+      <tr><th>Instruments</th><td>Vocals, Guitar, Keyboards, Clarinet</td></tr>
+      <tr><th>Years active</th><td>2012–present</td></tr>
+      <tr><th>Labels</th><td>Fader, Republic</td></tr>
+    </table>
+  </aside>
+
+  <p>
+    <b>Claire Elizabeth Cottrill</b> (born August 18, 1998), known professionally as <b>Clairo</b>, is an American singer-songwriter. She began sharing music online at the age of 13 and gained widespread fame in 2017 following the viral success of her lo-fi single, "Pretty Girl."
+  </p>
+
+  <div class="section-title">Early Life</div>
+  <p>
+    Born in Atlanta, Georgia, and raised in Carlisle, Massachusetts, Clairo grew up in a creative environment. She began recording covers and original songs on her laptop, uploading them to platforms like SoundCloud and Bandcamp under the name Clairo and DJ Baby Benz.
+  </p>
+
+  <div class="section-title">Musical Career</div>
+  <p>
+    After the massive success of "Pretty Girl," Clairo signed with Fader Label and released her debut EP, <i>Diary 001</i> (2018). She quickly transitioned from "bedroom pop" to a more refined sound with her debut studio album, <b>Immunity (2019)</b>, which featured the hit singles "Bags" and "Sofia."
+  </p>
+  <p>
+    Her subsequent albums, <b>Sling (2021)</b> and <b>Charm (2024)</b>, showcased her growth as a songwriter, incorporating elements of folk and 70s-inspired soft rock. <i>Charm</i> recently received a Grammy nomination for Best Alternative Music Album.
+  </p>
+
+  <div class="section-title">Personal Connection</div>
+  <p>
+    I admire Clairo for her ability to create intimate, relatable music that feels like a personal conversation. Songs like "Bags" perfectly capture the anxiety and vulnerability of modern relationships. Her evolution as an artist—moving from simple lo-fi beats to complex, soulful arrangements—is truly inspiring.
+  </p>
+
+</body>
+</html>
