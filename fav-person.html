@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanni - My Greatest Love</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+.back-btn:hover { color: #fff; }
+
+/* MAIN CONTENT */
+.content {
+  width: 100%;
+  max-width: 750px;
+  margin-top: 80px;
+  padding: 20px 20px 80px;
+}
+
+.wiki-header {
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h1 { font-size: 36px; font-weight: 600; letter-spacing: 1px; }
+
+/* GREATEST LOVE HIGHLIGHT */
+.ultimate-highlight {
+  background: linear-gradient(145deg, rgba(255, 183, 197, 0.1), rgba(0,0,0,0));
+  border: 1px solid rgba(255, 183, 197, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  text-align: center;
+  border-left: 4px solid #ffb7c5;
+}
+
+.ultimate-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #ffb7c5;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.ultimate-text {
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* INFOBOX */
+.infobox {
+  background: rgba(17,17,17,0.8);
+  border: 1px solid #1f1f1f;
+  width: 100%;
+  max-width: 280px;
+  float: right;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .infobox { float: none; margin: 0 auto 30px; width: 100%; }
+}
+
+.infobox img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infobox th {
+  text-align: left;
+  padding: 8px 0;
+  width: 40%;
+  opacity: 0.4;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+.infobox td {
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+/* SECTIONS */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 5px;
+  margin: 35px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+
+b { color: #fff; }
+
+/* CORE MEMORY BOX */
+.memory-box {
+  background: rgba(229, 9, 20, 0.05); /* Subtle Coke Red tint */
+  border-left: 3px solid #e50914;
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  border-radius: 0 10px 10px 0;
+}
+
+.memory-date {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e50914;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.memory-text {
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+}
+
+/* THE LETTER SECTION */
+.letter-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.letter-box::before {
+  content: '\f004'; /* Heart Icon */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 150px;
+  color: rgba(255, 183, 197, 0.03);
+  z-index: 0;
+}
+
+.letter-content {
+  position: relative;
+  z-index: 1;
+}
+
+.letter-greeting {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffb7c5;
+}
+
+.letter-body {
+  font-size: 16px;
+  line-height: 2;
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+}
+
+.letter-sign {
+  margin-top: 30px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 26px;
+  color: #ffb7c5;
+}
+
+.footer { text-align: center; font-size: 11px; opacity: 0.3; margin-top: 60px; letter-spacing: 2px; clear: both; }
+
+</style>
+</head>
+
+<body>
+
+<a href="favorites.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+
+<div class="content">
+  <div class="wiki-header">
+    <h1>Hanni Pham</h1>
+  </div>
+
+  <div class="ultimate-highlight">
+    <span class="ultimate-label">Status: Forever</span>
+    <span class="ultimate-text">My absolute favorite person. The greatest love of all time.</span>
+  </div>
+
+  <aside class="infobox">
+    <img src="hanni-wiki.jpg" alt="Hanni Pham">
+    <table>
+      <tr><th>Birth name</th><td>Phạm Ngọc Hân</td></tr>
+      <tr><th>Born</th><td>October 6, 2004 (Age 21)</td></tr>
+      <tr><th>Origin</th><td>Melbourne, Australia</td></tr>
+      <tr><th>Occupation</th><td>Singer, Dancer</td></tr>
+      <tr><th>Group</th><td>NewJeans</td></tr>
+      <tr><th>Years active</th><td>2022–present</td></tr>
+      <tr><th>Personal Era</th><td>2023–2026 (and beyond)</td></tr>
+    </table>
+  </aside>
+
+  <p>
+    <b>Hanni</b> (Korean: 하니), born <b>Phạm Ngọc Hân</b>, is a Vietnamese-Australian singer and dancer based in South Korea. She is a member of the globally acclaimed girl group <b>NewJeans</b> under ADOR. Beyond her incredible talent as an idol, she holds the most significant place in my life.
+  </p>
+
+  <div class="section-title">The Longest Admiration</div>
+  <p>
+    I have been deeply admiring her since <b>2023 up to 2026</b>, making her the longest-lasting favorite person of my entire life. My support for her has transcended beyond just being a fan of a K-pop idol; she has become my safe space, my motivation, and truly, my greatest love of all time.
+  </p>
+
+  <div class="memory-box">
+    <span class="memory-date"><i class="fas fa-ticket-alt"></i> September 5, 2025 • Philippines</span>
+    <span class="memory-text">The unforgettable day I finally saw her live in person during the Coca-Cola Concert. A dream turned into reality.</span>
+  </div>
+
+  <div class="letter-box">
+    <div class="letter-content">
+      <div class="letter-greeting">Dear Hanni,</div>
+      <p class="letter-body">
+        For years, you have been the brightest light in my life. You are my most favorite person in the world, and I know you will be forever. Before I found you, things felt ordinary, but because of you, my life finally gained a beautiful sense of meaning and purpose. 
+        <br><br>
+        From 2023 to 2026, my admiration for you has only grown stronger every single day. Seeing you in person during the Coca-Cola concert here in the Philippines on September 5, 2025, was the best day of my life. Seeing your smile with my own eyes was a core memory I will carry forever.
+        <br><br>
+        You are the person I have loved the longest in my entire life, and I proudly consider you my greatest love of all time. Thank you for simply existing. Because of you, I am genuinely happy.
+      </p>
+      <div class="letter-sign">Forever yours, DevXDave</div>
+    </div>
+  </div>
+
+</body>
+</html>
