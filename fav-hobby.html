@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hobby - Chess</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  z-index: 10;
+}
+
+/* MAIN CONTENT */
+.content {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 80px;
+  padding: 20px 20px 80px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 { font-size: 42px; font-weight: 600; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 10px; }
+
+/* CHESS.COM LINK */
+.chess-link {
+  font-size: 13px;
+  color: #81b64c;
+  text-decoration: none;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.chess-link:hover { text-decoration: underline; opacity: 1; }
+
+/* CHESS.COM STATS GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-box {
+  background: rgba(17,17,17,0.8);
+  border: 1px solid #1f1f1f;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.stat-label { font-size: 10px; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; display: block;}
+.stat-value { font-size: 22px; font-weight: 600; color: #81b64c; }
+.not-played { font-size: 14px; opacity: 0.3; font-weight: 400; }
+
+/* BIOGRAPHY SECTION */
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 40px 0 20px;
+  border-left: 3px solid #81b64c;
+  padding-left: 15px;
+}
+
+.card {
+  background: rgba(17,17,17,0.4);
+  border: 1px solid #1f1f1f;
+  padding: 25px;
+  border-radius: 20px;
+  line-height: 1.8;
+}
+
+p { font-size: 15px; opacity: 0.8; margin-bottom: 20px; }
+
+/* IDOL SECTION */
+.idol-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #111;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.idol-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.idol-name { font-size: 18px; font-weight: 600; }
+.idol-title { font-size: 12px; opacity: 0.5; }
+
+.footer { text-align: center; font-size: 11px; opacity: 0.3; margin-top: 60px; letter-spacing: 2px; }
+
+</style>
+</head>
+
+<body>
+
+<a href="favorites.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+
+<div class="content">
+  <div class="header-section">
+    <h1>CHESS</h1>
+    <a href="https://www.chess.com/member/davechristopherr" class="chess-link" target="_blank">
+      <i class="fas fa-external-link-alt" style="font-size: 10px; margin-right: 5px;"></i> chess.com
+    </a>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <span class="stat-label">Blitz</span>
+      <span class="stat-value">1938</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Bullet</span>
+      <span class="stat-value">1802</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Rapid</span>
+      <span class="stat-value">1595</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Classical</span>
+      <span class="stat-value not-played">OTB - Not Yet Played</span>
+    </div>
+  </div>
+
+  <div class="section-title">My Escape</div>
+  <div class="card">
+    <p>
+      Chess is more than just a hobby for me; it is a mental sanctuary. Whenever I immerse myself in a game, the outside world fades away. All my problems and stress disappear as I focus purely on the 64 squares in front of me.
+    </p>
+    <p>
+      The complexity of the game demands total concentration, leaving no room for negative thoughts. It is a form of meditation through strategy that allows me to disconnect from reality.
+    </p>
+  </div>
+
+  <div class="section-title">My Idol</div>
+  <div class="card">
+    <p>
+      In the world of chess, my ultimate inspiration is the legendary 11th World Chess Champion.
+    </p>
+    <div class="idol-box">
+      <img src="bobby.jpg" alt="Bobby Fischer" class="idol-img">
+      <div>
+        <div class="idol-name">Bobby Fischer</div>
+        <div class="idol-title">World Chess Champion</div>
+      </div>
+    </div>
+    <p style="margin-top: 20px;">
+      I admire Fischer for his uncompromising dedication and his aggressive, precise style of play. He revolutionized the game and proved that with enough will and focus, one can conquer the entire chess world.
+    </p>
+  </div>
+
+</body>
+</html>
