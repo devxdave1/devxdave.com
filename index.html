@@ -815,22 +815,25 @@ style="display:none;"
 </div>
   
 <!-- NOW WATCHING -->
-<div id="watchingCard" class="card" style="display:none; padding: 15px 20px;">
-  <div style="display:flex; gap:18px; align-items:center;">
-    
-    <img id="watchImage" 
-         style="width:80px; height:110px; object-fit:cover; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" />
+<div id="watchingCard" class="card" style="display:none; padding: 18px;">
+  
+  <div style="font-size: 10px; letter-spacing: 2px; opacity: 0.7; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+    <i id="watchIcon" class="fas fa-film"></i>
+    <span id="watchCategory">WATCHING MOVIE</span>
+  </div>
 
+  <div style="display:flex; gap:15px; align-items:center;">
+    <img id="watchImage" style="width:70px; height:100px; object-fit:cover; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+    
     <div style="flex:1;">
-      <span id="watchCategory" class="watching-category">WATCHING</span>
+      <div id="watchTitle" style="font-size: 16px; font-weight: 600; margin-bottom: 6px; letter-spacing: 0.5px;">Title</div>
       
-      <div class="watching-title-text" id="watchTitle">Title</div>
-      
-      <div id="episodeContainer" class="watching-sub">
-        <i class="fas fa-play-circle watching-icon-mini"></i>
-        <span id="watchEpisode"></span>
+      <div style="font-size: 12px; opacity: 0.6; display: flex; align-items: center; gap: 6px;">
+        <i class="far fa-clock" style="font-size: 11px;"></i>
+        <span id="watchRuntime">1h 43m</span>
       </div>
     </div>
+    
   </div>
 </div>
 
@@ -994,26 +997,30 @@ function toggleSpotify(){
 
 /* ===== NOW WATCHING WITH IMAGE ===== */
 
-function setWatching(title, category, episode, imageUrl) {
+function setWatching(title, category, runtimeOrEpisode, imageUrl) {
   const card = document.getElementById("watchingCard");
   const titleEl = document.getElementById("watchTitle");
   const categoryEl = document.getElementById("watchCategory");
-  const episodeEl = document.getElementById("watchEpisode");
-  const epContainer = document.getElementById("episodeContainer");
+  const iconEl = document.getElementById("watchIcon");
+  const runtimeEl = document.getElementById("watchRuntime");
   const imageEl = document.getElementById("watchImage");
 
   if (title) {
     card.style.display = "block";
     titleEl.textContent = title;
-    categoryEl.textContent = category.toUpperCase(); // K-DRAMA, K-MOVIE, o MOVIE
-
-    // Ipakita lang ang episode at icon kung K-Drama
-    if (category.toLowerCase() === "k-drama" && episode) {
-      epContainer.style.display = "block";
-      episodeEl.textContent = "Episode " + episode;
+    
+    // Automatic na magpapalit ng icon at text depende sa category
+    let catUpper = category.toUpperCase();
+    if (catUpper.includes("DRAMA") || catUpper.includes("SERIES")) {
+      categoryEl.textContent = "WATCHING " + catUpper;
+      iconEl.className = "fas fa-tv"; // TV icon para sa series/dramas
     } else {
-      epContainer.style.display = "none";
+      categoryEl.textContent = "WATCHING " + catUpper;
+      iconEl.className = "fas fa-film"; // Film icon para sa movies
     }
+
+    // Ilalagay ang runtime o episode
+    runtimeEl.textContent = runtimeOrEpisode;
 
     if (imageUrl) {
       imageEl.src = imageUrl;
@@ -1024,14 +1031,16 @@ function setWatching(title, category, episode, imageUrl) {
   }
 }
 
-// Halimbawa ng pag-update:
+// Halimbawa kung paano mo tatawagin ang function:
 document.addEventListener("DOMContentLoaded", function() {
-  // format: (Title, Category, Episode, Image)
-  setWatching("The Truman Show", "Movie", "", "Trumanshow.jpg"); 
   
-  // Kung K-Drama, ganito:
-  // setWatching("Crash Landing on You", "K-Drama", "12", "cloy.jpg");
-});  
+  // Para sa Movie (Title, Category, Runtime, Image)
+  setWatching("The Truman Show", "Movie", "1h 43m", "Trumanshow.jpg"); 
+  
+  // Kapag nag-K-Drama ka, palitan mo lang nang ganito:
+  // setWatching("Crash Landing on You", "K-Drama", "Ep 12 • 1h 10m", "cloy.jpg");
+
+});
 
 </script>
 
