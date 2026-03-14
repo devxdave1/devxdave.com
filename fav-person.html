@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanni - My Greatest Love</title>
+<title>Hanni - Key Influence</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -59,22 +59,22 @@ body {
 
 h1 { font-size: 36px; font-weight: 600; letter-spacing: 1px; }
 
-/* GREATEST LOVE HIGHLIGHT */
+/* PROFESSIONAL HIGHLIGHT */
 .ultimate-highlight {
-  background: linear-gradient(145deg, rgba(255, 183, 197, 0.1), rgba(0,0,0,0));
-  border: 1px solid rgba(255, 183, 197, 0.3);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 12px;
   margin-bottom: 30px;
   text-align: center;
-  border-left: 4px solid #ffb7c5;
+  border-left: 4px solid #ffffff;
 }
 
 .ultimate-label {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: #ffb7c5;
+  color: #a3a3a3;
   display: block;
   margin-bottom: 5px;
 }
@@ -148,10 +148,10 @@ p {
 
 b { color: #fff; }
 
-/* CORE MEMORY BOX */
+/* CORE MEMORY BOX (MAS MALINAW NA COCA-COLA RED TINT) */
 .memory-box {
-  background: rgba(229, 9, 20, 0.05); /* Subtle Coke Red tint */
-  border-left: 3px solid #e50914;
+  background: rgba(229, 9, 20, 0.1); /* Dinagdagan yung opacity para mas makita ang red */
+  border-left: 3px solid #e50914; 
   padding: 15px 20px;
   margin-bottom: 25px;
   border-radius: 0 10px 10px 0;
@@ -160,7 +160,7 @@ b { color: #fff; }
 .memory-date {
   font-size: 12px;
   font-weight: 600;
-  color: #e50914;
+  color: #ff333a; 
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -173,116 +173,150 @@ b { color: #fff; }
   color: rgba(255,255,255,0.9);
 }
 
-/* THE LETTER SECTION */
-.letter-box {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid #2a2a2a;
-  border-radius: 20px;
-  padding: 40px;
-  margin-top: 50px;
+/* ---------------------------------------------------
+   HIGH VISIBILITY SPLIT ENVELOPE (Hahatiin sa gitna)
+----------------------------------------------------- */
+.split-envelope-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: 50px auto 0 auto;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.letter-box::before {
-  content: '\f004'; /* Heart Icon Background */
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
+/* TOP HALF NG SOBRE */
+.env-top {
+  height: 100px;
+  background: #151515; /* Lighter base para hindi mawala sa background */
+  border: 1px solid rgba(255, 255, 255, 0.25); /* CLEAR WHITE OUTLINE */
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.env-flap {
   position: absolute;
-  top: -20px;
-  right: -20px;
-  font-size: 150px;
-  color: rgba(255, 183, 197, 0.03);
+  top: 0; left: 0; 
+  width: 100%; height: 120px;
+  background: #2b2b2b; /* Very visible gray flap */
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 4;
+}
+
+/* PAG BUMUKAS YUNG FLAP PATAAS */
+.split-envelope-wrapper.is-open .env-flap {
+  transform: rotateX(180deg);
+  background: #111; /* Didilim pag nakabukas na para mag-blend */
+  z-index: 1; 
+}
+
+/* THE LETTER (Nasa gitna, lalaki pag nag open) */
+.env-letter {
+  background: #0a0a0a;
+  border-left: 1px dashed rgba(255,255,255,0.2);
+  border-right: 1px dashed rgba(255,255,255,0.2);
+  margin: 0 15px; 
+  max-height: 0; 
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 1.2s ease 0.4s, opacity 0.8s ease 0.6s, padding 0.8s ease 0.4s;
+  z-index: 2; 
+}
+
+.split-envelope-wrapper.is-open .env-letter {
+  max-height: 1500px; 
+  opacity: 1;
+  padding: 40px 30px;
+}
+
+/* BOTTOM HALF NG SOBRE (Pocket) */
+.env-bottom {
+  height: 120px;
+  background: rgba(255, 255, 255, 0.2); /* Kulay ito ng Fold Lines */
+  border: 1px solid rgba(255, 255, 255, 0.25); /* CLEAR WHITE OUTLINE */
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  position: relative;
+  z-index: 3; 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Inner dark background para sa loob ng pocket pag na-open */
+.env-bottom-innerbg {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: #151515;
+  clip-path: polygon(0 0, 100% 0, 50% 49.8%);
   z-index: 0;
 }
 
-/* BLURRED CONTENT */
-.letter-content {
-  position: relative;
+/* Left side ng sobre */
+.env-bottom::before {
+  content: '';
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: #1f1f1f; /* Kulay ng gilid */
+  clip-path: polygon(0 0, 49.8% 50%, 0 100%); /* May 0.2% gap para lumabas ang puting linya */
   z-index: 1;
-  filter: blur(10px);
-  user-select: none;
-  pointer-events: none;
-  transition: filter 0.8s ease;
 }
 
-.letter-content.unlocked {
-  filter: blur(0);
-  user-select: auto;
-  pointer-events: auto;
+/* Right side ng sobre */
+.env-bottom::after {
+  content: '';
+  position: absolute; top:0; right:0; width:100%; height:100%;
+  background: #1f1f1f; /* Kulay ng gilid */
+  clip-path: polygon(100% 0, 50.2% 50%, 100% 100%); /* May 0.2% gap */
+  z-index: 1;
 }
 
-.letter-greeting {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #ffb7c5;
+/* Bottom fold ng sobre */
+.env-pocket-bottom {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: #2b2b2b; /* Mas light ang ilalim na flap */
+  clip-path: polygon(0 100%, 50% 50.2%, 100% 100%); /* May gap para sa linya */
+  z-index: 2;
 }
 
-.letter-body {
-  font-size: 16px;
-  line-height: 2;
-  font-style: italic;
-  color: rgba(255,255,255,0.9);
-}
-
-.letter-sign {
-  margin-top: 30px;
-  font-family: 'Dancing Script', cursive;
-  font-size: 26px;
-  color: #ffb7c5;
-}
-
-/* LOCK OVERLAY UI */
-.lock-overlay {
+/* LOCK UI (Tinakpan ang background tint para mas mag-pop yung sobre) */
+.lock-ui {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0; left: 0; 
+  width: 100%; height: 220px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  background: transparent; /* TINANGGAL ANG DARK OVERLAY */
   z-index: 10;
-  text-align: center;
-  padding: 20px;
-  backdrop-filter: blur(2px);
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, visibility 0.5s;
 }
 
-.lock-overlay.hidden {
+.split-envelope-wrapper.is-open .lock-ui {
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
 }
 
-.lock-icon-container {
-  position: relative;
+.seal-heart {
+  font-size: 32px;
+  color: #000000;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Nilakasan ang glow ng heart seal */
   margin-bottom: 15px;
-}
-
-.lock-icon-container .fa-heart {
-  font-size: 45px;
-  color: #ffb7c5;
-}
-
-.lock-icon-container .fa-lock {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
-  color: #000;
 }
 
 .lock-question {
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 15px;
-  color: #fff;
+  color: #ffffff; /* Pinalinaw ang font */
+  text-shadow: 0 1px 4px #000; /* Added text shadow to make it readable above lines */
   line-height: 1.6;
+  text-align: center;
 }
 
 .lock-question b {
-  color: #ffb7c5;
-  font-size: 16px;
+  color: #ffffff;
+  font-size: 14px;
 }
 
 .lock-input-group {
@@ -292,41 +326,73 @@ b { color: #fff; }
 
 .lock-input-group input {
   padding: 10px 15px;
-  border-radius: 8px;
-  border: 1px solid #ffb7c5;
-  background: #111;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.5); /* Mas clear na input border */
+  background: #000;
   color: white;
   outline: none;
   font-family: 'Quicksand', sans-serif;
   text-align: center;
-  width: 140px;
+  width: 150px;
+  transition: 0.3s;
 }
+
+.lock-input-group input:focus { border-color: #ffffff; }
 
 .lock-input-group button {
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
-  background: #ffb7c5;
-  color: #000;
-  font-weight: 700;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 600;
   font-family: 'Quicksand', sans-serif;
   cursor: pointer;
   transition: 0.2s;
 }
 
-.lock-input-group button:hover {
-  background: #ff9cb1;
-}
+.lock-input-group button:hover { background: #cccccc; }
 
 .error-msg {
-  color: #ff4d4d;
+  color: #a3a3a3;
   font-size: 12px;
   margin-top: 10px;
   height: 15px;
 }
 
+/* TEXT SA LOOB NG LETTER */
+.letter-greeting {
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+.letter-body {
+  font-size: 15px;
+  line-height: 2.2;
+  color: rgba(255,255,255,0.7);
+  text-align: justify;
+}
+
+.letter-sign {
+  margin-top: 40px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: right;
+}
+
 .footer { text-align: center; font-size: 11px; opacity: 0.3; margin-top: 60px; letter-spacing: 2px; clear: both; }
 
+/* ANIMATION SA ERROR */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
 </style>
 </head>
 
@@ -341,7 +407,7 @@ b { color: #fff; }
 
   <div class="ultimate-highlight">
     <span class="ultimate-label">Status: Forever</span>
-    <span class="ultimate-text">My absolute favorite person. The greatest love of all time.</span>
+    <span class="ultimate-text">My primary inspiration and greatest influence.</span>
   </div>
 
   <aside class="infobox">
@@ -363,7 +429,7 @@ b { color: #fff; }
 
   <div class="section-title">The Longest Admiration</div>
   <p>
-    I have been deeply admiring her since <b>2022 up to 2026</b>, making her the longest-lasting favorite person of my entire life. My support for her has transcended beyond just being a fan of a K-pop idol; she has become my safe space, my motivation, and truly, my greatest love of all time.
+    I have been deeply admiring her since <b>2022 up to 2026</b>, making her the longest-lasting favorite person of my entire life. My support for her has transcended beyond just being a fan of a K-pop idol; she has become my safe space, my motivation, and truly, my greatest inspiration.
   </p>
 
   <div class="memory-box">
@@ -371,15 +437,12 @@ b { color: #fff; }
     <span class="memory-text">The unforgettable day I finally saw her live in person during the Coca-Cola Concert. A dream turned into reality.</span>
   </div>
 
-  <div class="letter-box">
+  <div class="split-envelope-wrapper" id="envelopeWrapper">
     
-    <div class="lock-overlay" id="lockOverlay">
-      <div class="lock-icon-container">
-        <i class="fas fa-heart"></i>
-        <i class="fas fa-lock"></i>
-      </div>
+    <div class="lock-ui" id="lockUI">
+      <i class="fas fa-heart seal-heart"></i>
       <p class="lock-question">
-        To unlock this letter, answer this question:<br>
+        To open this letter, answer this question:<br>
         <b>What is the name of Hanni's white dog?</b>
       </p>
       <div class="lock-input-group">
@@ -389,7 +452,11 @@ b { color: #fff; }
       <p id="errorMessage" class="error-msg"></p>
     </div>
 
-    <div class="letter-content" id="letterContent">
+    <div class="env-top">
+      <div class="env-flap"></div>
+    </div>
+
+    <div class="env-letter">
       <div class="letter-greeting">Dear Hanni,</div>
       <p class="letter-body">
         For years, you have been the brightest light in my life. You are my most favorite person in the world, and I know you will always be. Before I found you, everything in my life felt ordinary and empty, but because of you, my life finally gained a beautiful sense of meaning and purpose.
@@ -402,14 +469,20 @@ b { color: #fff; }
         <br><br>
         Even from far away, you changed my life in a way that words can barely explain. I just hope that wherever you are, you are happy, safe, and surrounded by people who truly care about you. That alone is enough to make me smile.
       </p>
-      <div class="letter-sign">Forever yours, DavePham</div>
+      <div class="letter-sign">Forever yours,<br>Dave Pham</div>
     </div>
+
+    <div class="env-bottom">
+      <div class="env-bottom-innerbg"></div>
+      <div class="env-pocket-bottom"></div>
+    </div>
+
   </div>
 
 </div>
 
 <script>
-  // Pindutin ang Enter para ma-trigger ang Unlock
+  // Enter key para madaling mag-unlock
   document.getElementById("dogNameInput").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -420,33 +493,19 @@ b { color: #fff; }
   function checkAnswer() {
     const input = document.getElementById("dogNameInput").value.trim().toLowerCase();
     const errorMsg = document.getElementById("errorMessage");
-    const overlay = document.getElementById("lockOverlay");
-    const content = document.getElementById("letterContent");
+    const wrapper = document.getElementById("envelopeWrapper");
 
-    // Tanggapin kahit uppercase, lowercase, o may space (e.g. "Mia", "mia ", "MIA")
     if (input === "mia") {
-      overlay.classList.add("hidden");
-      content.classList.add("unlocked");
+      wrapper.classList.add("is-open"); 
       errorMsg.textContent = "";
     } else {
       errorMsg.textContent = "Incorrect answer. Please try again.";
-      // I-shake ang text para mapansin
+      errorMsg.style.color = "#ffffff"; 
       errorMsg.style.animation = "none";
       setTimeout(() => errorMsg.style.animation = "shake 0.3s", 10);
     }
   }
 </script>
 
-<style>
-/* Animation para sa maling sagot */
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-</style>
-
 </body>
-      </html>
+</html>
