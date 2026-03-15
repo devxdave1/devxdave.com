@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects & Skills - devxdave</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Quicksand', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* MENU ICON */
+.menu-icon {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 101;
+  color: white;
+}
+
+/* SIDE MENU */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background: #0a0a0a;
+  border-left: 1px solid #1f1f1f;
+  z-index: 110;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 60px 25px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  transition: 0.3s;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.menu-item:hover, .menu-item.active {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+#menuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 105;
+  backdrop-filter: blur(4px);
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 80px;
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 { font-size: 28px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
+.subtitle { font-size: 13px; opacity: 0.5; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
+
+/* SKILLS SECTION (Styled like Tags) */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.skill-tag {
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  padding: 12px 18px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.skill-tag i {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* CARDS FOR PROJECTS (Same as aboutme.html) */
+.section-label { 
+  font-size: 10px; 
+  font-weight: 600; 
+  letter-spacing: 2px; 
+  opacity: 0.5; 
+  text-transform: uppercase; 
+  margin-bottom: 15px; 
+  display: block; 
+}
+
+.card {
+  background: rgba(17,17,17,0.6);
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none; /* Para sa links */
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.card:hover {
+  background: rgba(25,25,25,0.8);
+  border-color: #333;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.project-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.status-badge {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 4px 8px;
+  border: 1px solid #333;
+  color: #a3a3a3;
+  border-radius: 6px;
+  background: #0a0a0a;
+}
+
+.project-icon {
+  font-size: 18px;
+  color: #a3a3a3;
+}
+
+p.project-desc { 
+  font-size: 15px; 
+  line-height: 1.7; 
+  opacity: 0.85; 
+  margin-bottom: 20px; 
+  flex-grow: 1;
+}
+
+.project-tech {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tech-bubble {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 8px;
+  color: #d1d1d1;
+  font-weight: 600;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="menu-icon" onclick="toggleSideMenu()">
+  <i class="fas fa-bars"></i>
+</div>
+
+<div id="menuOverlay" onclick="toggleSideMenu()"></div>
+
+<div id="sideMenu">
+  <div onclick="toggleSideMenu()" style="position:absolute; top:20px; right:20px; font-size:22px; cursor:pointer; opacity:0.5;">
+    <i class="fas fa-times"></i>
+  </div>
+ <nav style="margin-top:20px;">
+    <a href="index.html" class="menu-item"><i class="fas fa-home"></i> Home</a>
+    <a href="aboutme.html" class="menu-item"><i class="fas fa-user"></i> About me</a>
+    <a href="projects.html" class="menu-item active"><i class="fas fa-code"></i> Projects</a>
+    <a href="gender.html" class="menu-item"><i class="fas fa-venus-mars"></i> Gender</a>
+    <a href="favorites.html" class="menu-item"><i class="fas fa-heart"></i> Favorites</a>
+    <a href="spotify.html" class="menu-item"><i class="fab fa-spotify"></i> Spotify</a>
+    <a href="chess.html" class="menu-item"><i class="fas fa-chess-knight"></i> Chess</a>
+  </nav>
+</div>
+
+<div class="content">
+  <div class="header-section">
+    <h1>WORKSPACE</h1>
+    <div class="subtitle">Projects & Programming Skills</div>
+  </div>
+
+  <span class="section-label">Programming Skills</span>
+  <div class="skills-container">
+    <div class="skill-tag"><i class="fab fa-html5"></i> HTML5</div>
+    <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</div>
+    <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+    <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+  </div>
+
+  <span class="section-label">Featured Projects</span>
+  
+  <a href="LINK_DITO_NG_FLAPPYJEANS" target="_blank" class="card">
+    <div class="project-header">
+      <div class="project-title-wrapper">
+        <span class="project-title">FlappyJeans</span>
+        <span class="status-badge">Unfinished</span>
+      </div>
+      <i class="fas fa-external-link-alt project-icon"></i>
+    </div>
+    <p class="project-desc">
+      A web-based game inspired by the classic mechanics of Flappy Bird, creatively reimagined with a NewJeans theme. This project is currently in the development phase and serves as an exercise in game logic and web animation.
+    </p>
+    <div class="project-tech">
+      <span class="tech-bubble">HTML</span>
+      <span class="tech-bubble">CSS</span>
+      <span class="tech-bubble">JavaScript</span>
+    </div>
+  </a>
+
+  <a href="a.r.o.d.html" target="_blank" class="card">
+    <div class="project-header">
+      <div class="project-title-wrapper">
+        <span class="project-title">A.R.O.D</span>
+        <span class="status-badge">FSOCIETY</span>
+      </div>
+      <i class="fas fa-external-link-alt project-icon"></i>
+    </div>
+    <p class="project-desc">
+      A terminal-style, encrypted database interface designed to catalog and organize collected personal intelligence. Note: This project contains preliminary information gathered about a specific individual of interest. It was created purely out of curiosity and a desire to learn more, with absolutely no malicious intent.
+    </p>
+    <div class="project-tech">
+      <span class="tech-bubble">HTML</span>
+      <span class="tech-bubble">CSS</span>
+      <span class="tech-bubble">JavaScript</span>
+    </div>
+  </a>
+
+</div>
+
+<script>
+function toggleSideMenu() {
+  const menu = document.getElementById("sideMenu");
+  const overlay = document.getElementById("menuOverlay");
+  if (menu.style.right === "0px") {
+    menu.style.right = "-260px";
+    overlay.style.display = "none";
+  } else {
+    menu.style.right = "0px";
+    overlay.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
